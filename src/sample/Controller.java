@@ -8,16 +8,26 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebView;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.html.HTMLInputElement;
+import ru.todo100.social.vk.Engine;
 import ru.todo100.social.vk.datas.PostData;
+import ru.todo100.social.vk.datas.UserData;
+import ru.todo100.social.vk.strategy.GroupsOperations;
+import ru.todo100.social.vk.strategy.UserOperations;
 import ru.todo100.social.vk.strategy.WallOperations;
 
 import java.io.BufferedReader;
@@ -53,7 +63,14 @@ public class Controller {
     Button b;
 
     @FXML
-    private void initialize() {
+    private void initialize() throws IOException {
+
+
+
+//        stage.initOwner(
+//                ((Node)event.getSource()).getScene().getWindow() );
+
+
         this.init();
         webView.getEngine().getLoadWorker().stateProperty().addListener(new ChangeListener<Worker.State>() {
             @Override
@@ -63,6 +80,11 @@ public class Controller {
                         String[] splitLocation = webView.getEngine().getLocation().split("#access_token=");
                         String[] temp = splitLocation[1].split("&");
                         accessToken = temp[0];
+                        UserOperations user = new UserOperations(accessToken);
+                        UserData userData = user.get();
+                        Engine.accessToken = accessToken;
+
+                        your_name.setText(yourNameLabel.replace("#YOUR_VK_NAME", userData.getFirstName() + " " + userData.getLastName()));
                     }
 
                     NodeList nodes = webView.getEngine().getDocument().getElementsByTagName("input");
@@ -84,6 +106,26 @@ public class Controller {
             }
         });
 
+
+
+    }
+
+    @FXML
+    AnchorPane userGroups;
+
+    public void showUserGroups(ActionEvent actionEvent) {
+        Stage stage = new Stage();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(
+                    this.getClass().getResource("userGroups.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.setScene(new Scene(root));
+        stage.setTitle("My modal window");
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.show();
     }
 
     public static class Person {
@@ -279,7 +321,7 @@ public class Controller {
 //        photoMedium.setCellValueFactory(new PropertyValueFactory<GroupData, String>("photoMedium"));
 //        photoBig.setCellValueFactory(new PropertyValueFactory<GroupData, String>("photoBig"));
 
-        webView.getEngine().load("https://oauth.vk.com/authorize?client_id=" + this.clientId + "&scope=friends,messages,wall&redirect_uri=https://oauth.vk.com/blank.html&display=page&v=5.27N&response_type=token");
+        webView.getEngine().load("https://oauth.vk.com/authorize?client_id=" + this.clientId + "&scope=friends,messages,wall,groups&redirect_uri=https://oauth.vk.com/blank.html&display=page&v=5.27N&response_type=token");
     }
 
     public void searchButtonAction(ActionEvent actionEvent) throws MalformedURLException {
@@ -301,7 +343,7 @@ public class Controller {
             for (int i = 0; i < array.length(); i++) {
                 if (array.get(i) instanceof JSONObject) {
                     GroupData groupData = new GroupData();
-                    groupData.setGid(array.getJSONObject(i).getLong("gid"));
+                    //groupData.setGid(array.getJSONObject(i).getLong("gid"));
                     groupData.setName(array.getJSONObject(i).getString("name"));
                     groupData.setScreenName(array.getJSONObject(i).getString("screen_name"));
                     groupData.setIsClosed(Boolean.parseBoolean(String.valueOf(array.getJSONObject(i).getInt("is_closed"))));
@@ -318,11 +360,26 @@ public class Controller {
 
 
 
-
+            Thread.sleep(1000l);
 
             WallOperations wall = new WallOperations(accessToken);
-            wall.post(99991,0,0,URLEncoder.encode("Всем привет", "UTF-8"));
+            //wall.post(99991,0,0,URLEncoder.encode("Всем привет", "UTF-8"));
             List<PostData> posts = wall.get(99991,"",0,0,"", (short) 0);
+
+
+//            GroupsOperations groups = new GroupsOperations(accessToken);
+//
+//            for (int i = 0; i < data.size(); i++) {
+//                Thread.sleep(1000l);
+
+//            }
+
+            UserOperations user = new UserOperations(accessToken);
+            UserData userData = user.get();
+
+            your_name.setText(yourNameLabel.replace("#YOUR_VK_NAME", userData.getFirstName() + " " + userData.getLastName()));
+
+
 //            if (wall.delete(99991,posts.get(0).getId())){
 //                System.out.println("Deleted");
 //            } else {
@@ -335,6 +392,8 @@ public class Controller {
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
 
     }
@@ -346,5 +405,12 @@ public class Controller {
     }
     @FXML
     TextArea postMessage;
+
+    @FXML
+    Label your_name;
+
+    final String yourNameLabel = "Вы вошли как: #YOUR_VK_NAME";
+
+
 
 }
