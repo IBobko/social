@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_vkontakte" default="compile.module.vkontakte">
+  <dirname property="module.vkontakte.basedir" file="${ant.file.module_vkontakte}"/>
+  
+  <property name="module.jdk.home.vkontakte" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.vkontakte" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.vkontakte" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.vkontakte" value="-encoding UTF-8 -source 8 ${compiler.args}"/>
+  
+  <property name="vkontakte.output.dir" value="${module.vkontakte.basedir}/out/production/Vkontakte"/>
+  <property name="vkontakte.testoutput.dir" value="${module.vkontakte.basedir}/out/test/Vkontakte"/>
+  
+  <path id="vkontakte.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="vkontakte.module.production.classpath">
+    <path refid="${module.jdk.classpath.vkontakte}"/>
+    <path refid="library.org.json-20120521.classpath"/>
+    <path refid="library.spring-4.1.4.release.classpath"/>
+  </path>
+  
+  <path id="vkontakte.runtime.production.module.classpath">
+    <pathelement location="${vkontakte.output.dir}"/>
+    <path refid="library.org.json-20120521.classpath"/>
+    <path refid="library.spring-4.1.4.release.classpath"/>
+  </path>
+  
+  <path id="vkontakte.module.classpath">
+    <path refid="${module.jdk.classpath.vkontakte}"/>
+    <pathelement location="${vkontakte.output.dir}"/>
+    <path refid="library.org.json-20120521.classpath"/>
+    <path refid="library.spring-4.1.4.release.classpath"/>
+  </path>
+  
+  <path id="vkontakte.runtime.module.classpath">
+    <pathelement location="${vkontakte.testoutput.dir}"/>
+    <pathelement location="${vkontakte.output.dir}"/>
+    <path refid="library.org.json-20120521.classpath"/>
+    <path refid="library.spring-4.1.4.release.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.vkontakte">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.vkontakte">
+    <patternset refid="excluded.from.module.vkontakte"/>
+  </patternset>
+  
+  <path id="vkontakte.module.sourcepath">
+    <dirset dir="${module.vkontakte.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.vkontakte" depends="compile.module.vkontakte.production,compile.module.vkontakte.tests" description="Compile module Vkontakte"/>
+  
+  <target name="compile.module.vkontakte.production" depends="register.custom.compilers" description="Compile module Vkontakte; production classes">
+    <mkdir dir="${vkontakte.output.dir}"/>
+    <javac2 destdir="${vkontakte.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.vkontakte}/javac">
+      <compilerarg line="${compiler.args.vkontakte}"/>
+      <bootclasspath refid="vkontakte.module.bootclasspath"/>
+      <classpath refid="vkontakte.module.production.classpath"/>
+      <src refid="vkontakte.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.vkontakte"/>
+    </javac2>
+    
+    <copy todir="${vkontakte.output.dir}">
+      <fileset dir="${module.vkontakte.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.vkontakte.tests" depends="register.custom.compilers,compile.module.vkontakte.production" description="compile module Vkontakte; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.vkontakte" description="cleanup module">
+    <delete dir="${vkontakte.output.dir}"/>
+    <delete dir="${vkontakte.testoutput.dir}"/>
+  </target>
+</project>
