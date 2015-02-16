@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.web.*?>
 <?import javafx.scene.control.*?>
@@ -10,27 +11,47 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 
-<GridPane alignment="center" hgap="10" prefHeight="626.0" prefWidth="714.0" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<GridPane alignment="TOP_LEFT" hgap="10" prefHeight="626.0" vgap="10" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <columnConstraints>
-      <ColumnConstraints />
       <ColumnConstraints />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints maxHeight="152.0" minHeight="6.0" prefHeight="152.0" />
-      <RowConstraints maxHeight="567.0" minHeight="421.0" prefHeight="421.0" />
+      <RowConstraints />
+      <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="44.0" valignment="CENTER" vgrow="ALWAYS" />
+      <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="10.0" prefHeight="44.0" valignment="CENTER" vgrow="ALWAYS" />
+      <RowConstraints fillHeight="false" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="44.0" valignment="CENTER" vgrow="ALWAYS" />
+      <RowConstraints />
       <RowConstraints />
    </rowConstraints>
    <children>
-      <Button fx:id="b" mnemonicParsing="false" onAction="#handleSubmitButtonAction" text="Button" GridPane.rowIndex="2" />
-      <Pane prefHeight="200.0" prefWidth="200.0">
+       <MenuBar maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.rowIndex="0">
+           <menus>
+               <Menu mnemonicParsing="false" text="Контакт">
+                   <items>
+                       <MenuItem mnemonicParsing="false" text="Close" />
+                   </items>
+               </Menu>
+               <Menu mnemonicParsing="false" text="Группы">
+                   <items>
+                       <MenuItem fx:id="showUserGroups" mnemonicParsing="false" onAction="#showUserGroups" text="Посмотреть группы пользователя" />
+                   </items>
+               </Menu>
+               <Menu mnemonicParsing="false" text="Помощь">
+                   <items>
+                       <MenuItem mnemonicParsing="false" text="About" />
+                   </items>
+               </Menu>
+           </menus>
+       </MenuBar>
+       <Button fx:id="b" mnemonicParsing="false" onAction="#handleSubmitButtonAction" text="Button" GridPane.rowIndex="3" />
+      <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
          <children>
             <TextField fx:id="groupSearchString" layoutX="71.0" layoutY="32.0" text="Мороженое" />
             <Button layoutX="250.0" layoutY="32.0" mnemonicParsing="false" onAction="#searchButtonAction" text="Искать" />
-            <TextArea layoutX="419.0" layoutY="3.0" prefHeight="98.0" prefWidth="200.0" fx:id="postMessage"/>
-            <Button layoutX="488.0" layoutY="113.0" mnemonicParsing="false" text="Опубликовать" onAction="#publishPost"/>
+            <HBox layoutX="5.0" layoutY="2.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="31.0" prefWidth="482.0" />
          </children>
       </Pane>
-      <GridPane GridPane.rowIndex="1">
+      <GridPane GridPane.rowIndex="2">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="343.0" minWidth="10.0" prefWidth="222.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="566.0" minWidth="10.0" prefWidth="482.0" />
@@ -57,5 +78,13 @@
             </TableView>
          </children>
       </GridPane>
+      <Label fx:id="your_name" text="Вход не выполнен" GridPane.rowIndex="1">
+         <font>
+            <Font size="16.0" />
+         </font>
+         <padding>
+            <Insets left="10.0" />
+         </padding></Label>
+
    </children>
 </GridPane>
