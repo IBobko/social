@@ -22,6 +22,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -39,6 +40,7 @@ public class SearchGroupController {
     public TableColumn groupCanPostedColumn;
     public TableColumn invite;
     public TextArea logger;
+    public CheckBox onlyPostCheckbox;
 
     public void searchAction(ActionEvent actionEvent) {
         groupIdColumn.setCellValueFactory(new PropertyValueFactory<GroupData, String>("id"));
@@ -47,8 +49,31 @@ public class SearchGroupController {
 
         String serchString = searchString.getText();
         GroupsOperations groups = new GroupsOperations(Engine.accessToken);
-        List<GroupData> result = groups.search(serchString);
-        data.addAll(result);
+
+        Integer count = 100;
+        Integer maxCount = 100;
+        Integer maxCountIter = 10;
+
+        List<GroupData> groupsResult = new ArrayList<>();
+        for (int i = 0; i < maxCountIter; i++) {
+            List<GroupData> result = groups.search(serchString,i * count,maxCount);
+            for (GroupData group: result){
+                if (group.getCanPost()!=0) {
+                    groupsResult.add(group);
+                }
+            }
+            if (groupsResult.size() < maxCount && result.size() == 100) {
+                continue;
+            } else {
+                break;
+            }
+        }
+
+
+
+
+
+        data.addAll(groupsResult);
         groupsList.setItems(data);
     }
 

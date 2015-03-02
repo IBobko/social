@@ -102,9 +102,20 @@ public class GroupsOperations extends Operations {
         return null;
     }
 
-    public List<GroupData> search(String search) {
+    public List<GroupData> search(String search,Integer offset,Integer count) {
         try {
-            URL url = new URL("https://api.vk.com/method/groups.search?q=" + search + "&fields=can_post&access_token=" + Engine.accessToken);
+            StringBuilder urlString = new StringBuilder("https://api.vk.com/method/groups.search?");
+            urlString.append("&q=" + search);
+            urlString.append("&fields=can_post");
+            if (offset != null) {
+                urlString.append("&offset=" + offset);
+            }
+            if (count != null) {
+                urlString.append("&count=" + count);
+            }
+            urlString.append("&v=5.27&access_token=" + accessToken);
+
+            URL url = new URL(urlString.toString());
             URLConnection connection = url.openConnection();
 
             BufferedReader in = new BufferedReader(new InputStreamReader(
@@ -116,14 +127,16 @@ public class GroupsOperations extends Operations {
 
             System.out.println(builder.toString());
             JSONObject o = new JSONObject(builder.toString());
-            JSONArray array = o.getJSONArray("response");
+            JSONObject response = o.getJSONObject("response");
+            JSONArray items = response.getJSONArray("items");
+
             List<GroupData> groups = new ArrayList<>();
-            for (int i = 0; i < array.length(); i++) {
-                if (array.get(i) instanceof JSONObject) {
+            for (int i = 0; i < items.length(); i++) {
+                if (items.get(i) instanceof JSONObject) {
                     GroupData group = new GroupData();
-                    group.setId(array.getJSONObject(i).getLong("gid"));
-                    group.setName(array.getJSONObject(i).getString("name"));
-                    group.setCanPost(array.getJSONObject(i).getInt("can_post"));
+                    group.setId(items.getJSONObject(i).getLong("id"));
+                    group.setName(items.getJSONObject(i).getString("name"));
+                    group.setCanPost(items.getJSONObject(i).getInt("can_post"));
                     groups.add(group);
 //
 //                    //groupData.setGid(array.getJSONObject(i).getLong("gid"));
