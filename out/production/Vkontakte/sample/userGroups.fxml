@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
-<?import java.util.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -61,7 +60,7 @@
                 <Color blue="0.624" green="0.624" red="0.624" fx:id="x2" />
               </textFill>
             </Label>
-            <TableView fx:id="groupsList" VBox.vgrow="ALWAYS">
+            <TableView fx:id="groupsList" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
               <columns>
                 <TableColumn fx:id="groupIdColumn" text="ID" />
                 <TableColumn fx:id="groupNameColumn" text="Наименование" />
@@ -76,6 +75,9 @@
             <AnchorPane id="Content" minHeight="-1.0" minWidth="-1.0" prefHeight="545.0" prefWidth="430.0">
               <children>
                 <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="View" textAlignment="CENTER" textFill="$x2" wrapText="false" />
+                        <TextArea layoutY="55.0" fx:id="messageArea" maxWidth="1.7976931348623157E308" prefHeight="181.0" prefWidth="430.0" />
+                        <Button layoutX="26.0" onAction="#publish" fx:id="publishButton" layoutY="254.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="118.0" text="Опубликовать" />
+                        <TextArea layoutX="8.0" fx:id="loggerArea" layoutY="322.0" prefHeight="200.0" prefWidth="420.0" editable="false" />
               </children>
             </AnchorPane>
           </content>

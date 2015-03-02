@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="scenebuilder:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/scenebuilder_jar</output-path>
+    <root id="archive" name="scenebuilder_jar.jar">
+      <element id="module-output" name="scenebuilder" />
+    </root>
+  </artifact>
+</component>

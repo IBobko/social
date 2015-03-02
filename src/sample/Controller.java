@@ -51,9 +51,9 @@ public class Controller {
 
     private final String clientId = "4742608";
 
-    private final String login = "limit-speed@yandex.ru";
+    private final String login = "79038264271";
 
-    private final String password = "ineler100";
+    private final String password = "sam140900";
 
     @FXML
     private TableView groupsInfo;
@@ -124,6 +124,21 @@ public class Controller {
         }
         stage.setScene(new Scene(root));
         stage.setTitle("My modal window");
+        stage.initModality(Modality.WINDOW_MODAL);
+        stage.show();
+    }
+
+    public void searchGroups(ActionEvent actionEvent) {
+        Stage stage = new Stage();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(
+                    this.getClass().getResource("searchGroups.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        stage.setScene(new Scene(root));
+        stage.setTitle("Поиск групп");
         stage.initModality(Modality.WINDOW_MODAL);
         stage.show();
     }

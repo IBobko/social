@@ -93,7 +93,7 @@ public class WallOperations {
         return null;
     }
 
-    public Boolean post(int owner_id, int friends_only,int from_group,String message) {
+    public Boolean post(Long owner_id, int friends_only,int from_group,String message) {
         try {
             URL url = new URL("https://api.vk.com/method/wall.post?owner_id=" + owner_id
                     + "&message=" + message

@@ -3,9 +3,8 @@ package ru.todo100.social.vk.strategy;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.springframework.util.StringUtils;
+import ru.todo100.social.vk.Engine;
 import ru.todo100.social.vk.datas.GroupData;
-import ru.todo100.social.vk.datas.PostData;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,7 +23,7 @@ public class GroupsOperations extends Operations {
         super(accessToken);
     }
 
-    public int join(int group_id) {
+    public int join(Long group_id) {
         try {
             URL url = new URL("https://api.vk.com/method/groups.join?group_id=" + group_id
                     + "&v=5.27&access_token=" + accessToken);
@@ -58,7 +57,7 @@ public class GroupsOperations extends Operations {
             e.printStackTrace();
         }
 //        return null;*/
-            return 1;
+        return 1;
     }
 
 
@@ -97,7 +96,57 @@ public class GroupsOperations extends Operations {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }catch (JSONException e) {
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<GroupData> search(String search) {
+        try {
+            URL url = new URL("https://api.vk.com/method/groups.search?q=" + search + "&fields=can_post&access_token=" + Engine.accessToken);
+            URLConnection connection = url.openConnection();
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(
+                    connection.getInputStream()));
+            String inputLine;
+            StringBuilder builder = new StringBuilder();
+            while ((inputLine = in.readLine()) != null)
+                builder.append(inputLine);
+
+            System.out.println(builder.toString());
+            JSONObject o = new JSONObject(builder.toString());
+            JSONArray array = o.getJSONArray("response");
+            List<GroupData> groups = new ArrayList<>();
+            for (int i = 0; i < array.length(); i++) {
+                if (array.get(i) instanceof JSONObject) {
+                    GroupData group = new GroupData();
+                    group.setId(array.getJSONObject(i).getLong("gid"));
+                    group.setName(array.getJSONObject(i).getString("name"));
+                    group.setCanPost(array.getJSONObject(i).getInt("can_post"));
+                    groups.add(group);
+//
+//                    //groupData.setGid(array.getJSONObject(i).getLong("gid"));
+//                    groupData.setName(array.getJSONObject(i).getString("name"));
+//                    groupData.setScreenName(array.getJSONObject(i).getString("screen_name"));
+//                    groupData.setIsClosed(Boolean.parseBoolean(String.valueOf(array.getJSONObject(i).getInt("is_closed"))));
+//                    groupData.setType(array.getJSONObject(i).getString("type"));
+
+                    //groupData.setName(array.getJSONObject(i).getString("photo"));
+                    //groupData.setName(array.getJSONObject(i).getString("photo_medium"));
+                    //groupData.setName(array.getJSONObject(i).getString("photo_big"));
+
+
+                }
+            }
+            //groupsList.setItems(data);
+            return groups;
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
             e.printStackTrace();
         }
         return null;
