@@ -3,20 +3,19 @@ package ru.todo100.social.vk.strategy;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ru.todo100.social.vk.Engine;
 import ru.todo100.social.vk.datas.GroupData;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by igor on 08.02.15.
+ * Created by Igor Bobko on 08.02.15.
+ * GroupsOperations
  */
 public class GroupsOperations extends Operations {
     public GroupsOperations(String accessToken) {
@@ -49,8 +48,6 @@ public class GroupsOperations extends Operations {
 //                posts.add(post);
 //            }
 //            return posts;
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }/* catch (JSONException e) {
@@ -61,13 +58,14 @@ public class GroupsOperations extends Operations {
     }
 
 
+    @SuppressWarnings("StringBufferReplaceableByString")
     public List<GroupData> get() {
         try {
             StringBuilder urlString = new StringBuilder("https://api.vk.com/method/groups.get?");
             urlString.append("&extended=1");
             urlString.append("&fields=can_post");
 
-            urlString.append("&v=5.27&access_token=" + accessToken);
+            urlString.append("&v=5.27&access_token=").append(accessToken);
 
             URL url = new URL(urlString.toString());
 
@@ -92,28 +90,24 @@ public class GroupsOperations extends Operations {
                 groups.add(group);
             }
             return groups;
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
+        } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public List<GroupData> search(String search,Integer offset,Integer count) {
+    public List<GroupData> search(String search, Integer offset, Integer count) {
         try {
             StringBuilder urlString = new StringBuilder("https://api.vk.com/method/groups.search?");
-            urlString.append("&q=" + search);
+            urlString.append("&q=").append(search);
             urlString.append("&fields=can_post");
             if (offset != null) {
-                urlString.append("&offset=" + offset);
+                urlString.append("&offset=").append(offset);
             }
             if (count != null) {
-                urlString.append("&count=" + count);
+                urlString.append("&count=").append(count);
             }
-            urlString.append("&v=5.27&access_token=" + accessToken);
+            urlString.append("&v=5.27&access_token=").append(accessToken);
 
             URL url = new URL(urlString.toString());
             URLConnection connection = url.openConnection();
@@ -155,11 +149,7 @@ public class GroupsOperations extends Operations {
             //groupsList.setItems(data);
             return groups;
 
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
+        } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
         return null;
