@@ -15,5 +15,6 @@
     <orderEntry type="library" name="org.json-20120521" level="project" />
     <orderEntry type="library" name="Spring-4.1.4.RELEASE" level="project" />
     <orderEntry type="library" name="Spring-4.1.4.RELEASE" level="project" />
+    <orderEntry type="library" name="spring-core-4.1.4.RELEASE" level="project" />
   </component>
 </module>

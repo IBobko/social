@@ -4,14 +4,20 @@
     <properties id="javafx-properties">
       <options>
         <option name="appClass" value="sample.Main" />
+        <option name="description" value="" />
+        <option name="htmlParamFile" value="" />
+        <option name="paramFile" value="" />
+        <option name="title" value="" />
+        <option name="vendor" value="" />
       </options>
     </properties>
     <root id="root">
       <element id="archive" name="JavaFXApp.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+        </element>
         <element id="module-output" name="Vkontakte" />
-        <element id="library" level="project" name="org.json-20120521" />
       </element>
-      <element id="library" level="project" name="Spring-4.1.4.RELEASE" />
     </root>
   </artifact>
 </component>

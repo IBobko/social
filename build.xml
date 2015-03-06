@@ -94,7 +94,7 @@
   <!-- Project Libraries -->
   
   <path id="library.org.json-20120521.classpath">
-    <pathelement location="${basedir}/org.json-20120521.jar"/>
+    <pathelement location="/org.json-20120521.jar"/>
   </path>
   
   <path id="library.spring-4.1.4.release.classpath">
@@ -105,7 +105,7 @@
     <pathelement location="${basedir}/lib/spring-beans-4.1.4.RELEASE.jar"/>
     <pathelement location="${basedir}/lib/spring-context-4.1.4.RELEASE.jar"/>
     <pathelement location="${basedir}/lib/spring-context-support-4.1.4.RELEASE.jar"/>
-    <pathelement location="${basedir}/lib/spring-core-4.1.4.RELEASE.jar"/>
+    <pathelement location="/spring-core-4.1.4.RELEASE.jar"/>
     <pathelement location="${basedir}/lib/spring-expression-4.1.4.RELEASE.jar"/>
     <pathelement location="${basedir}/lib/spring-instrument-4.1.4.RELEASE.jar"/>
     <pathelement location="${basedir}/lib/spring-instrument-tomcat-4.1.4.RELEASE.jar"/>
@@ -250,7 +250,7 @@
     <copy todir="${artifact.temp.output.JavaFXApp}">
       <fileset dir="${vkontakte.output.dir}"/>
     </copy>
-    <copy file="${basedir}/org.json-20120521.jar" tofile="${artifact.temp.output.JavaFXApp}/org.json-20120521.jar"/>
+    <copy file="/org.json-20120521.jar" tofile="${artifact.temp.output.JavaFXApp}/org.json-20120521.jar"/>
     <fx:fileset id="all_but_JavaFXApp" dir="${artifact.temp.output.JavaFXApp}" includes="**/*.jar">
       <exclude name="JavaFXApp.jar"/>
     </fx:fileset>
