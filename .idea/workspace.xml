@@ -7,10 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/todo100/social/vk/strategy/GroupsOperations.java" afterPath="$PROJECT_DIR$/src/ru/todo100/social/vk/strategy/GroupsOperations.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/SearchGroupController.java" afterPath="$PROJECT_DIR$/src/sample/SearchGroupController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/UserGroupsController.java" afterPath="$PROJECT_DIR$/src/sample/UserGroupsController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/searchGroups.fxml" afterPath="$PROJECT_DIR$/src/sample/searchGroups.fxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Vkontakte/ru/todo100/social/vk/strategy/GroupsOperations.class" afterPath="$PROJECT_DIR$/out/production/Vkontakte/ru/todo100/social/vk/strategy/GroupsOperations.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/JavaFXApp/JavaFXApp.jar" afterPath="$PROJECT_DIR$/out/artifacts/JavaFXApp/JavaFXApp.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Vkontakte/sample/UserGroupsController.class" afterPath="$PROJECT_DIR$/out/production/Vkontakte/sample/UserGroupsController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/JavaFXApp/JavaFXApp.jnlp" afterPath="$PROJECT_DIR$/out/artifacts/JavaFXApp/JavaFXApp.jnlp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
@@ -129,7 +129,7 @@
       <file leaf-file-name="UserGroupsController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/UserGroupsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1445">
+            <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1445">
               <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
               <folding />
             </state>
@@ -138,47 +138,47 @@
       </file>
       <file leaf-file-name="userGroups.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/userGroups.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="1494" max-vertical-offset="1972">
               <caret line="100" column="16" selection-start-line="100" selection-start-column="16" selection-end-line="100" selection-end-column="16" />
               <folding />
             </state>
           </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
-          </provider>
         </entry>
       </file>
       <file leaf-file-name="sample.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.8" vertical-offset="935" max-vertical-offset="1564">
+            <state vertical-scroll-proportion="0.0" vertical-offset="935" max-vertical-offset="1564">
               <caret line="67" column="34" selection-start-line="67" selection-start-column="34" selection-end-line="67" selection-end-column="34" />
               <folding />
             </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="searchGroups.fxml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/searchGroups.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.6" vertical-offset="333" max-vertical-offset="714">
+            <state vertical-scroll-proportion="0.0" vertical-offset="333" max-vertical-offset="714">
               <caret line="33" column="25" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
               <folding />
             </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="SearchGroupController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/SearchGroupController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.2841823" vertical-offset="796" max-vertical-offset="2567">
+            <state vertical-scroll-proportion="1.0644444" vertical-offset="796" max-vertical-offset="2567">
               <caret line="75" column="32" selection-start-line="75" selection-start-column="32" selection-end-line="75" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -190,33 +190,9 @@
       <file leaf-file-name="TableCell.java" pinned="false" current-in-tab="false">
         <entry file="jar://C:/Program Files/Java/jdk1.8.0_31/javafx-src.zip!/javafx/scene/control/TableCell.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="816" max-vertical-offset="13294">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="12903">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#6724#6732#0" expanded="false" />
-                <element signature="e#7360#7361#0" expanded="false" />
-                <element signature="e#7403#7404#0" expanded="false" />
-                <element signature="e#7448#7449#0" expanded="false" />
-                <element signature="e#7493#7494#0" expanded="false" />
-                <element signature="e#7538#7539#0" expanded="false" />
-                <element signature="e#7582#7583#0" expanded="false" />
-                <element signature="e#8097#8098#0" expanded="false" />
-                <element signature="e#8147#8148#0" expanded="false" />
-                <element signature="e#8194#8195#0" expanded="false" />
-                <element signature="e#8259#8260#0" expanded="false" />
-                <element signature="e#9982#9983#0" expanded="false" />
-                <element signature="e#10043#10044#0" expanded="false" />
-                <element signature="e#10096#10097#0" expanded="false" />
-                <element signature="e#10154#10155#0" expanded="false" />
-                <element signature="e#10583#10593#0" expanded="false" />
-                <element signature="e#15985#15986#0" expanded="false" />
-                <element signature="e#16036#16037#0" expanded="false" />
-                <element signature="e#27159#27160#0" expanded="false" />
-                <element signature="e#27191#27192#0" expanded="false" />
-                <element signature="e#27549#27550#0" expanded="false" />
-                <element signature="e#27591#27592#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -302,7 +278,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -406,6 +381,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -743,7 +719,8 @@
       <workItem from="1423563531775" duration="1458000" />
       <workItem from="1425205795414" duration="1107000" />
       <workItem from="1425208129816" duration="11747000" />
-      <workItem from="1425286786800" duration="2290000" />
+      <workItem from="1425286786800" duration="2311000" />
+      <workItem from="1425633143212" duration="199000" />
     </task>
     <task id="LOCAL-00001" summary="Добавлена новая форма">
       <created>1425287162386</created>
@@ -757,20 +734,25 @@
       <option name="project" value="LOCAL" />
       <updated>1425287361720</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Search Only can post">
+      <created>1425289093151</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1425289093152</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="56633000" />
+    <option name="totallyTimeSpent" value="56853000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.4442953" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3409396" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3261745" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -778,7 +760,6 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32935718" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39328858" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -789,12 +770,14 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39898348" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39898348" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3261745" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39328858" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -817,7 +800,8 @@
     </option>
     <MESSAGE value="Добавлена новая форма" />
     <MESSAGE value="gitignore&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="gitignore&#10;" />
+    <MESSAGE value="Search Only can post" />
+    <option name="LAST_COMMIT_MESSAGE" value="Search Only can post" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -829,14 +813,14 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="1632">
           <caret line="35" column="94" selection-start-line="35" selection-start-column="94" selection-end-line="35" selection-end-column="94" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
@@ -890,39 +874,32 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/userGroups.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1938">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/todo100/social/vk/strategy/UserOperations.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="1020">
           <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#631#632#0" expanded="false" />
-            <element signature="e#665#666#0" expanded="false" />
-            <element signature="e#694#695#0" expanded="false" />
-            <element signature="e#731#732#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="1632">
           <caret line="35" column="94" selection-start-line="35" selection-start-column="94" selection-end-line="35" selection-end-column="94" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
@@ -987,13 +964,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="315" max-vertical-offset="900">
           <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#631#632#0" expanded="false" />
-            <element signature="e#665#666#0" expanded="false" />
-            <element signature="e#694#695#0" expanded="false" />
-            <element signature="e#731#732#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1150,13 +1120,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="1170">
           <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#631#632#0" expanded="false" />
-            <element signature="e#665#666#0" expanded="false" />
-            <element signature="e#694#695#0" expanded="false" />
-            <element signature="e#731#732#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1195,45 +1158,21 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/userGroups.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1494" max-vertical-offset="1972">
           <caret line="100" column="16" selection-start-line="100" selection-start-column="16" selection-end-line="100" selection-end-column="16" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_31/javafx-src.zip!/javafx/scene/control/TableCell.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="13294">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#6724#6732#0" expanded="false" />
-            <element signature="e#7360#7361#0" expanded="false" />
-            <element signature="e#7403#7404#0" expanded="false" />
-            <element signature="e#7448#7449#0" expanded="false" />
-            <element signature="e#7493#7494#0" expanded="false" />
-            <element signature="e#7538#7539#0" expanded="false" />
-            <element signature="e#7582#7583#0" expanded="false" />
-            <element signature="e#8097#8098#0" expanded="false" />
-            <element signature="e#8147#8148#0" expanded="false" />
-            <element signature="e#8194#8195#0" expanded="false" />
-            <element signature="e#8259#8260#0" expanded="false" />
-            <element signature="e#9982#9983#0" expanded="false" />
-            <element signature="e#10043#10044#0" expanded="false" />
-            <element signature="e#10096#10097#0" expanded="false" />
-            <element signature="e#10154#10155#0" expanded="false" />
-            <element signature="e#10583#10593#0" expanded="false" />
-            <element signature="e#15985#15986#0" expanded="false" />
-            <element signature="e#16036#16037#0" expanded="false" />
-            <element signature="e#27159#27160#0" expanded="false" />
-            <element signature="e#27191#27192#0" expanded="false" />
-            <element signature="e#27549#27550#0" expanded="false" />
-            <element signature="e#27591#27592#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1241,7 +1180,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.026275115" vertical-offset="0" max-vertical-offset="647">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1262,30 +1200,30 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/sample.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.8" vertical-offset="935" max-vertical-offset="1564">
+        <state vertical-scroll-proportion="0.0" vertical-offset="935" max-vertical-offset="1564">
           <caret line="67" column="34" selection-start-line="67" selection-start-column="34" selection-end-line="67" selection-end-column="34" />
           <folding />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/searchGroups.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder">
         <state />
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/searchGroups.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.6" vertical-offset="333" max-vertical-offset="714">
+        <state vertical-scroll-proportion="0.0" vertical-offset="333" max-vertical-offset="714">
           <caret line="33" column="25" selection-start-line="33" selection-start-column="25" selection-end-line="33" selection-end-column="25" />
           <folding />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/SearchGroupController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2841823" vertical-offset="796" max-vertical-offset="2567">
+        <state vertical-scroll-proportion="1.0644444" vertical-offset="796" max-vertical-offset="2567">
           <caret line="75" column="32" selection-start-line="75" selection-start-column="32" selection-end-line="75" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
