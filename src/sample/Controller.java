@@ -51,9 +51,9 @@ public class Controller {
 
     private final String clientId = "4742608";
 
-    private final String login = "79038264271";
+    private final String login = "test";
 
-    private final String password = "sam140900";
+    private final String password = "test";
 
     @FXML
     private TableView groupsInfo;
@@ -99,7 +99,7 @@ public class Controller {
                         }
                         if (element.getNodeValue().equals("submit")) {
                             HTMLInputElement submitElement = (HTMLInputElement) nodes.item(i);
-                            submitElement.click();
+                           // submitElement.click();
                         }
                     }
                 }

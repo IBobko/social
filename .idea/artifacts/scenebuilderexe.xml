@@ -1,0 +1,21 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" name="scenebuilderexe">
+    <output-path>$PROJECT_DIR$/out/artifacts/scenebuilderexe</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="com.oracle.javafx.scenebuilder.app.SceneBuilderApp" />
+        <option name="description" value="" />
+        <option name="htmlParamFile" value="" />
+        <option name="nativeBundle" value="exe" />
+        <option name="paramFile" value="" />
+        <option name="title" value="" />
+        <option name="vendor" value="" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="scenebuilder.jar">
+        <element id="module-output" name="scenebuilder" />
+      </element>
+    </root>
+  </artifact>
+</component>
