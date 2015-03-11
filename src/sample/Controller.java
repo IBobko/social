@@ -24,47 +24,63 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.html.HTMLInputElement;
 import ru.todo100.social.vk.Engine;
+import ru.todo100.social.vk.datas.DatabaseData;
 import ru.todo100.social.vk.datas.PostData;
 import ru.todo100.social.vk.datas.UserData;
-import ru.todo100.social.vk.strategy.GroupsOperations;
+import ru.todo100.social.vk.strategy.DatabaseOperations;
 import ru.todo100.social.vk.strategy.UserOperations;
 import ru.todo100.social.vk.strategy.WallOperations;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.*;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Controller {
-    private String accessToken;
+    final String yourNameLabel = "Вы вошли как: #YOUR_VK_NAME";
+    private final String clientId = "4742608";
+    private final String login = "limit-speed@yandex.ru";
+    private final String password = "ineler100";
+    private final ObservableList<GroupData> data =
+            FXCollections.observableArrayList(
 
+            );
+    Main mainApp;
+    Button b;
+    @FXML
+    AnchorPane userGroups;
+    @FXML
+    TableColumn gid;
+    @FXML
+    TableColumn name;
+    @FXML
+    TableColumn screenName;
+    @FXML
+    TableColumn isClosed;
+    @FXML
+    TableColumn type;
+    @FXML
+    TextArea postMessage;
+    @FXML
+    Label your_name;
+    private String accessToken;
     @FXML
     private WebView webView;
-
     @FXML
     private TextArea info;
-
     @FXML
     private TextField groupSearchString;
-
-    private final String clientId = "4742608";
-
-    private final String login = "test";
-
-    private final String password = "test";
-
     @FXML
     private TableView groupsInfo;
 
-    Main mainApp;
-
-    Button b;
-
     @FXML
     private void initialize() throws IOException {
-
 
 
 //        stage.initOwner(
@@ -75,8 +91,8 @@ public class Controller {
         webView.getEngine().getLoadWorker().stateProperty().addListener(new ChangeListener<Worker.State>() {
             @Override
             public void changed(ObservableValue<? extends Worker.State> observable, Worker.State oldValue, Worker.State newValue) {
-                if (newValue == Worker.State.SUCCEEDED){
-                    if ( webView.getEngine().getLocation().contains("#")) {
+                if (newValue == Worker.State.SUCCEEDED) {
+                    if (webView.getEngine().getLocation().contains("#")) {
                         String[] splitLocation = webView.getEngine().getLocation().split("#access_token=");
                         String[] temp = splitLocation[1].split("&");
                         accessToken = temp[0];
@@ -85,6 +101,8 @@ public class Controller {
                         Engine.accessToken = accessToken;
 
                         your_name.setText(yourNameLabel.replace("#YOUR_VK_NAME", userData.getFirstName() + " " + userData.getLastName()));
+
+
                     }
 
                     NodeList nodes = webView.getEngine().getDocument().getElementsByTagName("input");
@@ -99,7 +117,7 @@ public class Controller {
                         }
                         if (element.getNodeValue().equals("submit")) {
                             HTMLInputElement submitElement = (HTMLInputElement) nodes.item(i);
-                           // submitElement.click();
+                            submitElement.click();
                         }
                     }
                 }
@@ -107,11 +125,7 @@ public class Controller {
         });
 
 
-
     }
-
-    @FXML
-    AnchorPane userGroups;
 
     public void showUserGroups(ActionEvent actionEvent) {
         Stage stage = new Stage();
@@ -142,6 +156,131 @@ public class Controller {
         stage.initModality(Modality.WINDOW_MODAL);
         stage.show();
     }
+//    @FXML
+//    TableColumn isAdmin;
+//    @FXML
+//    TableColumn isMember;
+//    @FXML
+//    TableColumn photo;
+//    @FXML
+//    TableColumn photoMedium;
+//    @FXML
+//    TableColumn photoBig;
+
+    public void setMain(Main mainApp) {
+        this.mainApp = mainApp;
+
+    }
+
+    public void handleSubmitButtonAction(ActionEvent actionEvent) throws MalformedURLException {
+        String[] pair = webView.getEngine().getLocation().split("#");
+
+        System.out.println(pair[1]);
+
+
+    }
+
+    public void init() {
+        groupsInfo.setItems(data);
+
+
+        ArrayList<PropertyValueFactory<Person, String>> columns = new ArrayList<>();
+
+
+        gid.setCellValueFactory(new PropertyValueFactory<GroupData, String>("gid"));
+
+        name.setCellValueFactory(new PropertyValueFactory<GroupData, String>("name"));
+
+        screenName.setCellValueFactory(new PropertyValueFactory<GroupData, String>("screenName"));
+        isClosed.setCellValueFactory(new PropertyValueFactory<GroupData, String>("isClosed"));
+        type.setCellValueFactory(new PropertyValueFactory<GroupData, String>("type"));
+
+//        isAdmin.setCellValueFactory(new PropertyValueFactory<GroupData, String>("isAdmin"));
+//        isMember.setCellValueFactory(new PropertyValueFactory<GroupData, String>("isMember"));
+//
+//        photo.setCellValueFactory(new PropertyValueFactory<GroupData, String>("photo"));
+//        photoMedium.setCellValueFactory(new PropertyValueFactory<GroupData, String>("photoMedium"));
+//        photoBig.setCellValueFactory(new PropertyValueFactory<GroupData, String>("photoBig"));
+
+        webView.getEngine().load("https://oauth.vk.com/authorize?client_id=" + this.clientId + "&scope=friends,messages,wall,groups&redirect_uri=https://oauth.vk.com/blank.html&display=page&v=5.27N&response_type=token");
+    }
+
+    public void searchButtonAction(ActionEvent actionEvent) throws MalformedURLException {
+        String serchString = groupSearchString.getText();
+        try {
+            URL url = new URL("https://api.vk.com/method/groups.search?q=" + serchString + "&access_token=" + accessToken);
+            URLConnection connection = url.openConnection();
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(
+                    connection.getInputStream()));
+            String inputLine;
+            StringBuilder builder = new StringBuilder();
+            while ((inputLine = in.readLine()) != null)
+                builder.append(inputLine);
+
+            System.out.println(builder.toString());
+            JSONObject o = new JSONObject(builder.toString());
+            JSONArray array = o.getJSONArray("response");
+            for (int i = 0; i < array.length(); i++) {
+                if (array.get(i) instanceof JSONObject) {
+                    GroupData groupData = new GroupData();
+                    //groupData.setGid(array.getJSONObject(i).getLong("gid"));
+                    groupData.setName(array.getJSONObject(i).getString("name"));
+                    groupData.setScreenName(array.getJSONObject(i).getString("screen_name"));
+                    groupData.setIsClosed(Boolean.parseBoolean(String.valueOf(array.getJSONObject(i).getInt("is_closed"))));
+                    groupData.setType(array.getJSONObject(i).getString("type"));
+
+                    //groupData.setName(array.getJSONObject(i).getString("photo"));
+                    //groupData.setName(array.getJSONObject(i).getString("photo_medium"));
+                    //groupData.setName(array.getJSONObject(i).getString("photo_big"));
+
+                    info.setText(info.getText() + "\n + " + array.getJSONObject(i).getString("name") + " " + array.getJSONObject(i).getInt("is_closed"));
+                    data.add(groupData);
+                }
+            }
+
+
+            Thread.sleep(1000l);
+
+            WallOperations wall = new WallOperations(accessToken);
+            //wall.post(99991,0,0,URLEncoder.encode("Всем привет", "UTF-8"));
+            List<PostData> posts = wall.get(99991, "", 0, 0, "", (short) 0);
+
+
+//            GroupsOperations groups = new GroupsOperations(accessToken);
+//
+//            for (int i = 0; i < data.size(); i++) {
+//                Thread.sleep(1000l);
+
+//            }
+
+            UserOperations user = new UserOperations(accessToken);
+            UserData userData = user.get();
+
+            your_name.setText(yourNameLabel.replace("#YOUR_VK_NAME", userData.getFirstName() + " " + userData.getLastName()));
+
+
+//            if (wall.delete(99991,posts.get(0).getId())){
+//                System.out.println("Deleted");
+//            } else {
+//                System.out.println("Not Deleted");
+//            }
+
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void publishPost(ActionEvent actionEvent) {
+        System.out.println(postMessage.getText());
+    }
 
     public static class Person {
         private final SimpleStringProperty firstName;
@@ -157,6 +296,7 @@ public class Controller {
         public String getFirstName() {
             return firstName.get();
         }
+
         public void setFirstName(String fName) {
             firstName.set(fName);
         }
@@ -164,6 +304,7 @@ public class Controller {
         public String getLastName() {
             return lastName.get();
         }
+
         public void setLastName(String fName) {
             lastName.set(fName);
         }
@@ -171,52 +312,12 @@ public class Controller {
         public String getEmail() {
             return email.get();
         }
+
         public void setEmail(String fName) {
             email.set(fName);
         }
 
     }
-
-    public void setMain(Main mainApp) {
-        this.mainApp = mainApp;
-
-    }
-
-    private final ObservableList<GroupData> data =
-            FXCollections.observableArrayList(
-
-            );
-
-    public void handleSubmitButtonAction(ActionEvent actionEvent) throws MalformedURLException {
-        String[] pair = webView.getEngine().getLocation().split("#");
-
-        System.out.println(pair[1]);
-
-
-
-
-    }
-    @FXML
-    TableColumn gid;
-    @FXML
-    TableColumn name;
-    @FXML
-    TableColumn screenName;
-    @FXML
-    TableColumn isClosed;
-    @FXML
-    TableColumn type;
-//    @FXML
-//    TableColumn isAdmin;
-//    @FXML
-//    TableColumn isMember;
-//    @FXML
-//    TableColumn photo;
-//    @FXML
-//    TableColumn photoMedium;
-//    @FXML
-//    TableColumn photoBig;
-
 
     public class GroupData {
         private Long gid;
@@ -310,122 +411,6 @@ public class Controller {
             this.photoMedium = photoMedium;
         }
     }
-
-
-
-
-    public void init() {
-        groupsInfo.setItems(data);
-
-
-        ArrayList<PropertyValueFactory<Person, String>> columns = new ArrayList<>();
-
-
-        gid.setCellValueFactory( new PropertyValueFactory<GroupData, String>("gid"));
-
-        name.setCellValueFactory(new PropertyValueFactory<GroupData, String>("name"));
-
-        screenName.setCellValueFactory(new PropertyValueFactory<GroupData, String>("screenName"));
-        isClosed.setCellValueFactory(new PropertyValueFactory<GroupData, String>("isClosed"));
-        type.setCellValueFactory(new PropertyValueFactory<GroupData, String>("type"));
-
-//        isAdmin.setCellValueFactory(new PropertyValueFactory<GroupData, String>("isAdmin"));
-//        isMember.setCellValueFactory(new PropertyValueFactory<GroupData, String>("isMember"));
-//
-//        photo.setCellValueFactory(new PropertyValueFactory<GroupData, String>("photo"));
-//        photoMedium.setCellValueFactory(new PropertyValueFactory<GroupData, String>("photoMedium"));
-//        photoBig.setCellValueFactory(new PropertyValueFactory<GroupData, String>("photoBig"));
-
-        webView.getEngine().load("https://oauth.vk.com/authorize?client_id=" + this.clientId + "&scope=friends,messages,wall,groups&redirect_uri=https://oauth.vk.com/blank.html&display=page&v=5.27N&response_type=token");
-    }
-
-    public void searchButtonAction(ActionEvent actionEvent) throws MalformedURLException {
-        String serchString = groupSearchString.getText();
-        try {
-            URL url = new URL("https://api.vk.com/method/groups.search?q=" + serchString + "&access_token=" + accessToken);
-            URLConnection connection = url.openConnection();
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(
-                    connection.getInputStream()));
-            String inputLine;
-            StringBuilder builder = new StringBuilder();
-            while ((inputLine = in.readLine()) != null)
-                builder.append(inputLine);
-
-            System.out.println(builder.toString());
-            JSONObject o = new JSONObject(builder.toString());
-            JSONArray array = o.getJSONArray("response");
-            for (int i = 0; i < array.length(); i++) {
-                if (array.get(i) instanceof JSONObject) {
-                    GroupData groupData = new GroupData();
-                    //groupData.setGid(array.getJSONObject(i).getLong("gid"));
-                    groupData.setName(array.getJSONObject(i).getString("name"));
-                    groupData.setScreenName(array.getJSONObject(i).getString("screen_name"));
-                    groupData.setIsClosed(Boolean.parseBoolean(String.valueOf(array.getJSONObject(i).getInt("is_closed"))));
-                    groupData.setType(array.getJSONObject(i).getString("type"));
-
-                    //groupData.setName(array.getJSONObject(i).getString("photo"));
-                    //groupData.setName(array.getJSONObject(i).getString("photo_medium"));
-                    //groupData.setName(array.getJSONObject(i).getString("photo_big"));
-
-                    info.setText(info.getText() + "\n + " + array.getJSONObject(i).getString("name") + " " + array.getJSONObject(i).getInt("is_closed"));
-                    data.add(groupData);
-                }
-            }
-
-
-
-            Thread.sleep(1000l);
-
-            WallOperations wall = new WallOperations(accessToken);
-            //wall.post(99991,0,0,URLEncoder.encode("Всем привет", "UTF-8"));
-            List<PostData> posts = wall.get(99991,"",0,0,"", (short) 0);
-
-
-//            GroupsOperations groups = new GroupsOperations(accessToken);
-//
-//            for (int i = 0; i < data.size(); i++) {
-//                Thread.sleep(1000l);
-
-//            }
-
-            UserOperations user = new UserOperations(accessToken);
-            UserData userData = user.get();
-
-            your_name.setText(yourNameLabel.replace("#YOUR_VK_NAME", userData.getFirstName() + " " + userData.getLastName()));
-
-
-//            if (wall.delete(99991,posts.get(0).getId())){
-//                System.out.println("Deleted");
-//            } else {
-//                System.out.println("Not Deleted");
-//            }
-
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-    }
-
-
-
-    public void publishPost(ActionEvent actionEvent) {
-        System.out.println(postMessage.getText());
-    }
-    @FXML
-    TextArea postMessage;
-
-    @FXML
-    Label your_name;
-
-    final String yourNameLabel = "Вы вошли как: #YOUR_VK_NAME";
-
 
 
 }

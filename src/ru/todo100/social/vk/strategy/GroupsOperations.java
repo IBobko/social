@@ -26,8 +26,6 @@ public class GroupsOperations extends Operations {
         try {
             URL url = new URL("https://api.vk.com/method/groups.join?group_id=" + group_id
                     + "&v=5.27&access_token=" + accessToken);
-
-
             URLConnection connection = url.openConnection();
             BufferedReader in = new BufferedReader(new InputStreamReader(
                     connection.getInputStream()));
@@ -36,27 +34,15 @@ public class GroupsOperations extends Operations {
             while ((inputLine = in.readLine()) != null) {
                 builder.append(inputLine);
             }
-            System.out.println(builder.toString());
-//            JSONObject object = new JSONObject(builder.toString());
-//            JSONObject response = object.getJSONObject("response");
-//            JSONArray items = response.getJSONArray("items");
-//            List<PostData> posts = new ArrayList<>();
-//            for (int i = 0; i < items.length(); i++) {
-//                PostData post = new PostData();
-//                post.setId(items.getJSONObject(i).getLong("id"));
-//                post.setText(items.getJSONObject(i).getString("text"));
-//                posts.add(post);
-//            }
-//            return posts;
-        } catch (IOException e) {
-            e.printStackTrace();
-        }/* catch (JSONException e) {
+            JSONObject object = new JSONObject(builder.toString());
+            if (object.has("response") && object.getInt("response") == 1) {
+                return 1;
+            }
+        } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
-//        return null;*/
-        return 1;
+        return 0;
     }
-
 
     @SuppressWarnings("StringBufferReplaceableByString")
     public List<GroupData> get() {

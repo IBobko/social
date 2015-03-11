@@ -18,7 +18,6 @@
       <root url="jar://$PROJECT_DIR$/lib/spring-orm-4.1.4.RELEASE.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/spring-beans-4.1.4.RELEASE.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/spring-context-4.1.4.RELEASE.jar!/" />
-      <root url="jar://$PROJECT_DIR$/lib/spring-core-4.1.4.RELEASE.jar!/" />
       <root url="jar://$PROJECT_DIR$/lib/spring-test-4.1.4.RELEASE.jar!/" />
     </CLASSES>
     <JAVADOC />

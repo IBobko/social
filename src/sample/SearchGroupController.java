@@ -5,6 +5,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -13,7 +14,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import ru.todo100.social.vk.Engine;
+import ru.todo100.social.vk.datas.DatabaseData;
 import ru.todo100.social.vk.datas.GroupData;
+import ru.todo100.social.vk.strategy.DatabaseOperations;
 import ru.todo100.social.vk.strategy.GroupsOperations;
 
 import java.io.BufferedReader;
@@ -33,6 +36,10 @@ public class SearchGroupController {
             FXCollections.observableArrayList(
 
             );
+    private final ObservableList<String> country =
+            FXCollections.observableArrayList(
+
+            );
     public TableView groupsList;
     public TextField searchString;
     public TableColumn groupIdColumn;
@@ -41,7 +48,13 @@ public class SearchGroupController {
     public TableColumn invite;
     public TextArea logger;
     public CheckBox onlyPostCheckbox;
+    public ComboBox countryList;
+    public ComboBox cityList;
 
+    @FXML
+    void initialize() {
+        this.init();
+    }
     public void searchAction(ActionEvent actionEvent) {
         groupIdColumn.setCellValueFactory(new PropertyValueFactory<GroupData, String>("id"));
         groupNameColumn.setCellValueFactory(new PropertyValueFactory<GroupData, String>("name"));
@@ -101,6 +114,30 @@ public class SearchGroupController {
 
         invite.setCellValueFactory(new PropertyValueFactory<TableView,Boolean>(""));
         invite.setCellFactory(booleanCellFactory);
+
+
+        DatabaseOperations database = new DatabaseOperations(Engine.accessToken);
+
+        for (DatabaseData cnt: database.getCountries()) {
+                country.add(cnt.getTitle());
+        }
+        countryList.setItems(country);
+
+        countryList.valueProperty().addListener(new ChangeListener<String>() {
+            @Override public void changed(ObservableValue ov, String t, String t1) {
+           //m     address = t1;
+                DatabaseOperations database = new DatabaseOperations(Engine.accessToken);
+                cityList.getItems().clear();
+                for (DatabaseData cnt: database.getCountries()) {
+                    if (cnt.getTitle().equals(t1)) {
+                        List<DatabaseData> cities = database.getCities(cnt.getId());
+                        for (DatabaseData city:cities) {
+                           cityList.getItems().add(city.getTitle());
+                        }
+                    }
+                }
+            }
+        });
     }
 
     class BooleanCell extends TableCell<TableView, Boolean> {
