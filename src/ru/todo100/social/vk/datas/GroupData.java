@@ -15,6 +15,16 @@ public class GroupData {
     private URI photoMedium;
     private URI photoBig;
 
+    public Integer getMemberCount() {
+        return memberCount;
+    }
+
+    public void setMemberCount(Integer memberCount) {
+        this.memberCount = memberCount;
+    }
+
+    private Integer memberCount;
+
     public URI getPhotoBig() {
         return photoBig;
     }

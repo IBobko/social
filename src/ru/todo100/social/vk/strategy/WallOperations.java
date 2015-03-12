@@ -3,6 +3,7 @@ package ru.todo100.social.vk.strategy;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.util.StringUtils;
 import ru.todo100.social.vk.datas.PostData;
 
 import java.io.BufferedReader;
@@ -93,11 +94,38 @@ public class WallOperations {
         return null;
     }
 
-    public Boolean post(Long owner_id, int friends_only,int from_group,String message) {
+    public Boolean post(Long owner_id, Integer friends_only,Integer from_group,String message,String attachment) {
+
+
+
         try {
-            URL url = new URL("https://api.vk.com/method/wall.post?owner_id=" + owner_id
-                    + "&message=" + message
-                    + "&v=5.27&access_token=" + accessToken);
+
+
+            StringBuilder urlString = new StringBuilder("https://api.vk.com/method/wall.post?");
+
+
+            if (owner_id != null) {
+                urlString.append("&owner_id=").append(owner_id);
+            }
+            if (friends_only != null) {
+                urlString.append("&friends_only=").append(friends_only);
+            }
+
+            if (from_group != null) {
+                urlString.append("&from_group=").append(from_group);
+            }
+
+            if (message != null) {
+                urlString.append("&message=").append(message);
+            }
+
+            if (attachment != null) {
+                urlString.append("&attachment=").append(attachment);
+            }
+
+            urlString.append("&v=5.27&access_token=").append(accessToken);
+
+            URL url = new URL(urlString.toString());
 
             URLConnection connection = url.openConnection();
             BufferedReader in = new BufferedReader(new InputStreamReader(

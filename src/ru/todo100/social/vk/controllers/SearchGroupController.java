@@ -1,4 +1,4 @@
-package sample;
+package ru.todo100.social.vk.controllers;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -13,6 +13,7 @@ import javafx.util.Callback;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.util.StringUtils;
 import ru.todo100.social.vk.Engine;
 import ru.todo100.social.vk.datas.DatabaseData;
 import ru.todo100.social.vk.datas.GroupData;
@@ -67,9 +68,37 @@ public class SearchGroupController {
         Integer maxCount = 100;
         Integer maxCountIter = 10;
 
+
+        Integer country_id = null;
+        Integer city_id = null;
+
+        String country = (String)countryList.getValue();
+        String city = (String)cityList.getValue();
+
+        DatabaseOperations database = new DatabaseOperations(Engine.accessToken);
+
+
+        if (!StringUtils.isEmpty(country)) {
+            for (DatabaseData cnt: database.getCountries()) {
+                if (cnt.getTitle().equals(country)) {
+                    country_id = cnt.getId();
+                }
+            }
+        }
+
+        if (!StringUtils.isEmpty(city)) {
+            for (DatabaseData cnt: database.getCities(country_id)) {
+                if (cnt.getTitle().equals(city)) {
+                    city_id = cnt.getId();
+                }
+            }
+        }
+
         List<GroupData> groupsResult = new ArrayList<>();
         for (int i = 0; i < maxCountIter; i++) {
-            List<GroupData> result = groups.search(serchString,i * count,maxCount);
+
+
+            List<GroupData> result = groups.search(serchString,i * count,maxCount,country_id,city_id);
             for (GroupData group: result){
                 if (group.getCanPost()!=0) {
                     groupsResult.add(group);
@@ -177,7 +206,7 @@ public class SearchGroupController {
         public void updateItem(Boolean item, boolean empty) {
             super.updateItem(item, empty);
             if (!isEmpty()) {
-                checkBox.setSelected(item);
+                checkBox.setSelected(true);
             }
         }
     }
