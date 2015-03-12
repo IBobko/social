@@ -3,22 +3,21 @@
     <output-path>$PROJECT_DIR$/out/artifacts/JavaFXApp</output-path>
     <properties id="javafx-properties">
       <options>
-        <option name="appClass" value="" />
+        <option name="appClass" value="ru.todo100.social.vk.Main" />
         <option name="description" value="" />
         <option name="htmlParamFile" value="" />
-        <option name="nativeBundle" value="exe" />
         <option name="paramFile" value="" />
-        <option name="title" value="" />
-        <option name="vendor" value="" />
+        <option name="title" value="Social" />
+        <option name="vendor" value="Todo100" />
       </options>
     </properties>
     <root id="root">
       <element id="archive" name="JavaFXApp.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+        </element>
         <element id="module-output" name="Vkontakte" />
-        <element id="library" level="project" name="org.json-20120521" />
-      </element>
-      <element id="directory" name="META-INF">
-        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+        <element id="dir-copy" path="$PROJECT_DIR$/lib" />
       </element>
     </root>
   </artifact>

@@ -1,3 +1,4 @@
 Manifest-Version: 1.0
-Main-Class: Main
+Class-Path: lib
+Main-Class: ru.todo100.social.vk.Main
 

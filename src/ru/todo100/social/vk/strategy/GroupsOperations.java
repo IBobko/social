@@ -49,7 +49,7 @@ public class GroupsOperations extends Operations {
         try {
             StringBuilder urlString = new StringBuilder("https://api.vk.com/method/groups.get?");
             urlString.append("&extended=1");
-            urlString.append("&fields=can_post");
+            urlString.append("&fields=can_post,members_count");
 
             urlString.append("&v=5.27&access_token=").append(accessToken);
 
@@ -73,6 +73,7 @@ public class GroupsOperations extends Operations {
                 group.setId(items.getJSONObject(i).getLong("id"));
                 group.setName(items.getJSONObject(i).getString("name"));
                 group.setCanPost(items.getJSONObject(i).getInt("can_post"));
+                group.setMemberCount(items.getJSONObject(i).getInt("members_count"));
                 groups.add(group);
             }
             return groups;
@@ -82,7 +83,7 @@ public class GroupsOperations extends Operations {
         return null;
     }
 
-    public List<GroupData> search(String search, Integer offset, Integer count) {
+    public List<GroupData> search(String search, Integer offset, Integer count, Integer country_id, Integer city_id) {
         try {
             StringBuilder urlString = new StringBuilder("https://api.vk.com/method/groups.search?");
             urlString.append("&q=").append(search);
@@ -93,6 +94,15 @@ public class GroupsOperations extends Operations {
             if (count != null) {
                 urlString.append("&count=").append(count);
             }
+
+            if (country_id != null) {
+                urlString.append("&country_id=").append(country_id);
+            }
+
+            if (city_id != null) {
+                urlString.append("&city_id=").append(city_id);
+            }
+
             urlString.append("&v=5.27&access_token=").append(accessToken);
 
             URL url = new URL(urlString.toString());
@@ -117,6 +127,7 @@ public class GroupsOperations extends Operations {
                     group.setId(items.getJSONObject(i).getLong("id"));
                     group.setName(items.getJSONObject(i).getString("name"));
                     group.setCanPost(items.getJSONObject(i).getInt("can_post"));
+
                     groups.add(group);
 //
 //                    //groupData.setGid(array.getJSONObject(i).getLong("gid"));
@@ -140,13 +151,24 @@ public class GroupsOperations extends Operations {
         }
         return null;
     }
+
+    public void leave(Integer group_id) {
+        try {
+            StringBuilder urlString = getStringBuilder("groups.leave");
+            if (group_id != null) {
+                urlString.append("&group_id=").append(group_id);
+            }
+            getResponse(urlString.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 //    groups.isMemberВозвращает информацию о том, является ли пользователь участником сообщества.
 //    groups.getByIdВозвращает информацию о заданном сообществе или о нескольких сообществах.
 //    groups.getВозвращает список сообществ указанного пользователя.
 //    groups.getMembersВозвращает список участников сообщества.
 
-//    groups.leaveДанный метод позволяет выходить из группы, публичной страницы, или встречи.
-//    groups.searchОсуществляет поиск сообществ по заданной подстроке.
+
 //    groups.getInvitesДанный метод возвращает список приглашений в сообщества и встречи текущего пользователя.
 //    groups.getInvitedUsersВозвращает список пользователей, которые были приглашены в группу.
 //    groups.banUserДобавляет пользователя в черный список группы.
