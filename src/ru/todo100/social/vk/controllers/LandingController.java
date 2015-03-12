@@ -46,7 +46,7 @@ public class LandingController {
             public void changed(ObservableValue<? extends Worker.State> observable, Worker.State oldValue, Worker.State newValue) {
                 if (newValue == Worker.State.SUCCEEDED) {
                     if (webView.getEngine().getLocation().contains("#")) {
-                        System.out.println(webView.getEngine().getLocation());
+                        webView.setVisible(false);
                         String[] splitLocation = webView.getEngine().getLocation().split("#access_token=");
                         String[] temp = splitLocation[1].split("&");
                         Engine.accessToken = temp[0];
@@ -63,16 +63,14 @@ public class LandingController {
                         }
                         if (element.getNodeValue().equals("pass")) {
                             HTMLInputElement passwordElement = (HTMLInputElement) nodes.item(i);
-                            passwordElement.setValue(password);
+                            //passwordElement.setValue(password);
                         }
                         if (element.getNodeValue().equals("submit")) {
                             HTMLInputElement submitElement = (HTMLInputElement) nodes.item(i);
-                            submitElement.click();
+                            //submitElement.click();
                         }
                     }
                 }
-
-
             }
         });
     }

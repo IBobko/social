@@ -154,28 +154,11 @@ public class GroupsOperations extends Operations {
 
     public void leave(Integer group_id) {
         try {
-            StringBuilder urlString = new StringBuilder("https://api.vk.com/method/groups.leave?");
-
-
+            StringBuilder urlString = getStringBuilder("groups.leave");
             if (group_id != null) {
                 urlString.append("&group_id=").append(group_id);
             }
-            urlString.append("&v=5.27&access_token=").append(accessToken);
-
-            URL url =new URL(urlString.toString());
-
-
-
-            URLConnection connection = url.openConnection();
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(
-                    connection.getInputStream()));
-            String inputLine;
-            StringBuilder builder = new StringBuilder();
-            while ((inputLine = in.readLine()) != null)
-                builder.append(inputLine);
-
-            System.out.println(builder.toString());
+            getResponse(urlString.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -185,8 +168,7 @@ public class GroupsOperations extends Operations {
 //    groups.getВозвращает список сообществ указанного пользователя.
 //    groups.getMembersВозвращает список участников сообщества.
 
-//    groups.leaveДанный метод позволяет выходить из группы, публичной страницы, или встречи.
-//    groups.searchОсуществляет поиск сообществ по заданной подстроке.
+
 //    groups.getInvitesДанный метод возвращает список приглашений в сообщества и встречи текущего пользователя.
 //    groups.getInvitedUsersВозвращает список пользователей, которые были приглашены в группу.
 //    groups.banUserДобавляет пользователя в черный список группы.

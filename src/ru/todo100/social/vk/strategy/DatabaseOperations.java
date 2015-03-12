@@ -4,39 +4,24 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import ru.todo100.social.vk.datas.DatabaseData;
-import ru.todo100.social.vk.datas.GroupData;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by igor on 06.03.15.
+ * @author Igor Bobko
  */
 public class DatabaseOperations extends Operations {
     public DatabaseOperations(String accessToken) {
         super(accessToken);
     }
 
-    public List<DatabaseData> getCountries(){
+    public List<DatabaseData> getCountries() {
         try {
-            URL url = new URL("https://api.vk.com/method/database.getCountries?"
-                    + "&v=5.27&access_token=" + accessToken);
-            URLConnection connection = url.openConnection();
-            BufferedReader in = new BufferedReader(new InputStreamReader(
-                    connection.getInputStream()));
-            String inputLine;
-            StringBuilder builder = new StringBuilder();
-            while ((inputLine = in.readLine()) != null) {
-                builder.append(inputLine);
-            }
-            System.out.println(builder.toString());
-
-            JSONObject object = new JSONObject(builder.toString());
+            StringBuilder urlString = getStringBuilder("database.getCountries");
+            String responseBody = getResponse(urlString.toString());
+            JSONObject object = new JSONObject(responseBody);
             JSONObject response = object.getJSONObject("response");
             JSONArray items = response.getJSONArray("items");
             List<DatabaseData> countries = new ArrayList<>();
@@ -47,29 +32,20 @@ public class DatabaseOperations extends Operations {
                 countries.add(country);
             }
             return countries;
-        } catch (IOException e/* | JSONException e*/) {
-          //  e.printStackTrace();
-        } catch (JSONException e) {
+        } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
         return null;
     }
 
-    public List<DatabaseData> getCities(Integer country_id){
+    public List<DatabaseData> getCities(Integer country_id) {
         try {
-            URL url = new URL("https://api.vk.com/method/database.getCities?"
-                    + "&v=5.27&country_id="+country_id+"&access_token=" + accessToken);
-            URLConnection connection = url.openConnection();
-            BufferedReader in = new BufferedReader(new InputStreamReader(
-                    connection.getInputStream()));
-            String inputLine;
-            StringBuilder builder = new StringBuilder();
-            while ((inputLine = in.readLine()) != null) {
-                builder.append(inputLine);
+            StringBuilder urlString = getStringBuilder("database.getCities");
+            if (country_id != null) {
+                urlString.append("&country_id=").append(country_id);
             }
-            System.out.println(builder.toString());
-
-            JSONObject object = new JSONObject(builder.toString());
+            String responseBody = getResponse(urlString.toString());
+            JSONObject object = new JSONObject(responseBody);
             JSONObject response = object.getJSONObject("response");
             JSONArray items = response.getJSONArray("items");
             List<DatabaseData> countries = new ArrayList<>();
@@ -80,9 +56,7 @@ public class DatabaseOperations extends Operations {
                 countries.add(country);
             }
             return countries;
-        } catch (IOException e/* | JSONException e*/) {
-            //  e.printStackTrace();
-        } catch (JSONException e) {
+        } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
         return null;
