@@ -8,9 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="JavaFXApp.jar" size="34908" download="eager" />
-    <jar href="org.json-20120521.jar" size="40375" download="eager" />
-    <jar href="spring-core-4.1.4.RELEASE.jar" size="1006987" download="eager" />
+    <jar href="JavaFXApp.jar" size="34894" download="eager" />
   </resources>
   <jfx:javafx-desc  width="600" height="400" main-class="sample.Main"  name="JavaFXApp" />
   <update check="background"/>

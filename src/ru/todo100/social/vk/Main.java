@@ -11,7 +11,8 @@ public class Main extends Application {
     final private String capkey = "47a6813d86e034fbf9f74432a2231b0a";
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("landing.fxml"));
+
+        Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("ru/todo100/social/vk/controllers/landing.fxml"));
         primaryStage.setTitle("Вконтакте");
         primaryStage.setScene(new Scene(root, 700, 700));
         primaryStage.show();
