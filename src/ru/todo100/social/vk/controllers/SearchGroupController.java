@@ -32,25 +32,23 @@ public class SearchGroupController {
     public TableColumn join;
     public TextArea logger;
     public CheckBox onlyPostCheckbox;
-    public ComboBox<DatabaseData> countryList;
-    public ComboBox<DatabaseData> cityList;
+    @FXML
+    private ComboBox<DatabaseData> countryList;
+    @FXML
+    private ComboBox<DatabaseData> cityList;
 
-    @SuppressWarnings({"unchecked", "Convert2streamapi"})
+    @SuppressWarnings("unchecked")
     @FXML
     void initialize() {
+        countryInit();
         groupIdColumn.setCellValueFactory(new PropertyValueFactory<GroupData, String>("id"));
         groupNameColumn.setCellValueFactory(new PropertyValueFactory<GroupData, String>("name"));
         groupCanPostedColumn.setCellValueFactory(new PropertyValueFactory<GroupData, String>("canPost"));
-
-        countryInit();
-
-
         Callback<TableColumn<TableView, Boolean>, TableCell<TableView, Boolean>> booleanCellFactory =
                 p -> new BooleanCell();
 
         join.setCellValueFactory(new PropertyValueFactory<TableView, Boolean>(""));
         join.setCellFactory(booleanCellFactory);
-
     }
 
     void countryInit() {
@@ -127,8 +125,9 @@ public class SearchGroupController {
         });
     }
 
-    @SuppressWarnings({"unchecked", "UnusedParameters", "Convert2streamapi"})
-    public void searchAction(ActionEvent actionEvent) {
+
+    @SuppressWarnings("unchecked")
+    public void searchAction() {
         final String searchString = this.searchString.getText();
         if (StringUtils.isEmpty(searchString)) {
             return;
@@ -153,9 +152,10 @@ public class SearchGroupController {
         for (int i = 0; i < maxCountIter; i++) {
             final List<GroupData> result = groups.search(searchString, i * count, maxCount, country_id, city_id);
             for (GroupData group : result) {
-                if (group.getCanPost() != 0) {
-                    groupsResult.add(group);
+                if (onlyPostCheckbox.isSelected() && group.getCanPost() != 0){
+                    continue;
                 }
+                groupsResult.add(group);
             }
             if (!(groupsResult.size() < maxCount && result.size() == maxCount)) {
                 break;
@@ -169,11 +169,20 @@ public class SearchGroupController {
     @SuppressWarnings("UnusedParameters")
     public void invite(ActionEvent actionEvent) {
         GroupsOperations groups = new GroupsOperations(Engine.accessToken);
+        Integer closedGroups = 0;
+        Integer joinedGroups = 0;
         for (int i = 0; i < groupsList.getItems().size(); i++) {
             GroupData group = (GroupData) groupsList.getItems().get(i);
             groups.join(group.getId());
+            joinedGroups++;
+            if (group.getCanPost()==0) {
+                closedGroups++;
+            }
             logger.appendText("You joined in " + group.getName() + "\n");
         }
+        logger.appendText("Total groups " + groupsList.getItems().size() + "\n");
+        logger.appendText("Joined groups " + joinedGroups + "\n");
+        logger.appendText("Closed " + closedGroups + "\n");
     }
 
     class BooleanCell extends TableCell<TableView, Boolean> {

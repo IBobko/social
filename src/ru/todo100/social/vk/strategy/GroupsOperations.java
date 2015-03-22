@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Igor Bobko on 08.02.15.
+ * @author Igor Bobko on 08.02.15.
  * GroupsOperations
  */
 public class GroupsOperations extends Operations {
@@ -63,7 +63,6 @@ public class GroupsOperations extends Operations {
             while ((inputLine = in.readLine()) != null) {
                 builder.append(inputLine);
             }
-            System.out.println(builder.toString());
             JSONObject object = new JSONObject(builder.toString());
             JSONObject response = object.getJSONObject("response");
             JSONArray items = response.getJSONArray("items");
