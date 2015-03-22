@@ -31,7 +31,8 @@ public class UserGroupsController {
     public TableColumn groupMemberCount;
     public TextField minMemberCount;
     public TextArea attachmentArea;
-    public Label sleepTime;
+    public TextField sleepTime;
+    public ComboBox pageGroup;
 
     @FXML
     @SuppressWarnings("unchecked")
@@ -54,10 +55,23 @@ public class UserGroupsController {
 
 
         data.addAll(userGroups);
-    }
+
+
+        final ObservableList<String> country =
+                FXCollections.observableArrayList(
+
+                );
+        country.add("Везде");
+        country.add("По страница");
+        country.add("По группа");
+        pageGroup.setItems(country);
+
+
+        }
 
     @SuppressWarnings("UnusedParameters")
     public void publish(ActionEvent actionEvent) {
+        System.out.println();
         loggerArea.appendText("Start publish\n");
         String message = messageArea.getText();
         String attachment = attachmentArea.getText();
@@ -68,14 +82,10 @@ public class UserGroupsController {
         List<GroupData> userGroups = groups.get();
         WallOperations wall = new WallOperations(Engine.accessToken);
         for (GroupData gd : userGroups) {
-            if (gd.getCanPost() == 1) {
-                loggerArea.appendText("Publish in: " + gd.getName() + "\n");
-                wall.post(gd.getId() * -1, 0, 0, message, attachment);
-                try {
-                    Thread.sleep(sleep);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+            switch(pageGroup.getSelectionModel().getSelectedIndex()) {
+                case 0: wall.post(gd.getId() * -1, 0, 0, message, attachment); loggerArea.appendText("Publish in: " + gd.getName() + "\n"); break;
+                case 1: if (gd.getCanPost() == 0) wall.post(gd.getId() * -1, 0, 0, message, attachment); loggerArea.appendText("Publish in: " + gd.getName() + "\n");break;
+                case 2: if (gd.getCanPost() == 1) wall.post(gd.getId() * -1, 0, 0, message, attachment); loggerArea.appendText("Publish in: " + gd.getName() + "\n");break;
             }
         }
     }

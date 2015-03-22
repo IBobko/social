@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.WebView?>
-<GridPane xmlns:fx="http://javafx.com/fxml/1" alignment="TOP_LEFT" hgap="10" prefHeight="626.0" prefWidth="631.0"
+<GridPane fx:id="gridPane" xmlns:fx="http://javafx.com/fxml/1" alignment="TOP_LEFT" hgap="10" prefHeight="626.0" prefWidth="631.0"
           vgap="10" xmlns="http://javafx.com/javafx/8"
           fx:controller="ru.todo100.social.vk.controllers.LandingController">
     <columnConstraints>
