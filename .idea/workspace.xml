@@ -7,16 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abf1a9c5-0006-4013-acfe-a417f2000778" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/todo100/social/vk/strategy/VideoOperations.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/JavaFXApp/JavaFXApp.jar" afterPath="$PROJECT_DIR$/out/artifacts/JavaFXApp/JavaFXApp.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/JavaFXApp/JavaFXApp.jnlp" afterPath="$PROJECT_DIR$/out/artifacts/JavaFXApp/JavaFXApp.jnlp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/LandingController.java" afterPath="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/LandingController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/todo100/social/vk/Main.java" afterPath="$PROJECT_DIR$/src/ru/todo100/social/vk/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/UserGroupsController.java" afterPath="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/UserGroupsController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Vkontakte.iml" afterPath="$PROJECT_DIR$/Vkontakte.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/todo100/social/vk/strategy/WallOperations.java" afterPath="$PROJECT_DIR$/src/ru/todo100/social/vk/strategy/WallOperations.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/landing.fxml" afterPath="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/landing.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/userGroups.fxml" afterPath="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/userGroups.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Vkontakte.iws" />
@@ -717,12 +709,19 @@
       <option name="number" value="Default" />
       <updated>1426238555917</updated>
       <workItem from="1426238556550" duration="6821000" />
-      <workItem from="1427023238869" duration="6402000" />
+      <workItem from="1427023238869" duration="6449000" />
     </task>
+    <task id="LOCAL-00001" summary="VK-2">
+      <created>1427029674624</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1427029674624</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13223000" />
+    <option name="totallyTimeSpent" value="13270000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="49" y="24" width="1551" height="876" extended-state="6" />
@@ -773,6 +772,8 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="VK-2" />
+    <option name="LAST_COMMIT_MESSAGE" value="VK-2" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
