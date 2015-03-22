@@ -173,8 +173,6 @@ public class SearchGroupController {
             }
         }
 
-
-
     }
 
     @SuppressWarnings("UnusedParameters")

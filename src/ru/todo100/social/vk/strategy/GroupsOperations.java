@@ -18,6 +18,12 @@ import java.util.List;
  * GroupsOperations
  */
 public class GroupsOperations extends Operations {
+    @SuppressWarnings("UnusedDeclaration")
+    enum Type {
+        event,
+        group,
+        page
+    }
     public GroupsOperations(String accessToken) {
         super(accessToken);
     }
@@ -48,43 +54,15 @@ public class GroupsOperations extends Operations {
     @SuppressWarnings("StringBufferReplaceableByString")
     public List<GroupData> get() {
         try {
-            StringBuilder urlString = new StringBuilder("https://api.vk.com/method/groups.get?");
+            final StringBuilder urlString = getStringBuilder("groups.get");
             urlString.append("&extended=1");
-            urlString.append("&fields=can_post,members_count,");
-
-            urlString.append("&v=5.27&access_token=").append(accessToken);
-
-            URL url = new URL(urlString.toString());
-
-            URLConnection connection = url.openConnection();
-            BufferedReader in = new BufferedReader(new InputStreamReader(
-                    connection.getInputStream()));
-            String inputLine;
-            StringBuilder builder = new StringBuilder();
-            while ((inputLine = in.readLine()) != null) {
-                builder.append(inputLine);
-            }
-            System.out.println(builder.toString());
-            JSONObject object = new JSONObject(builder.toString());
+            urlString.append("&fields=").append(getFields());
+            String responseBody = getResponse(urlString.toString());
+            System.out.println(responseBody);
+            JSONObject object = new JSONObject(responseBody);
             JSONObject response = object.getJSONObject("response");
             JSONArray items = response.getJSONArray("items");
-            List<GroupData> groups = new ArrayList<>();
-            System.out.println(response.toString());
-            for (int i = 0; i < items.length(); i++) {
-                JSONObject groupData = items.getJSONObject(i);
-                GroupData group = new GroupData();
-                group.setId(groupData.getLong("id"));
-                group.setName(groupData.getString("name"));
-                if (groupData.has("can_post")) {
-                    group.setCanPost(groupData.getInt("can_post"));
-                }
-                if (groupData.has("members_count")) {
-                    group.setMemberCount(groupData.getInt("members_count"));
-                }
-                group.setType(groupData.getString("type"));
-                groups.add(group);
-            }
-            return groups;
+            return getGroups(items);
         } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
@@ -93,9 +71,9 @@ public class GroupsOperations extends Operations {
 
     public List<GroupData> search(String search, Integer offset, Integer count, Integer country_id, Integer city_id) {
         try {
-            StringBuilder urlString = new StringBuilder("https://api.vk.com/method/groups.search?");
+            final StringBuilder urlString = getStringBuilder("groups.search");
             urlString.append("&q=").append(search);
-            urlString.append("&fields=can_post");
+            urlString.append("&fields=").append(getFields());
             if (offset != null) {
                 urlString.append("&offset=").append(offset);
             }
@@ -111,53 +89,43 @@ public class GroupsOperations extends Operations {
                 urlString.append("&city_id=").append(city_id);
             }
 
-            urlString.append("&v=5.27&access_token=").append(accessToken);
-
-            URL url = new URL(urlString.toString());
-            URLConnection connection = url.openConnection();
-
-            BufferedReader in = new BufferedReader(new InputStreamReader(
-                    connection.getInputStream()));
-            String inputLine;
-            StringBuilder builder = new StringBuilder();
-            while ((inputLine = in.readLine()) != null)
-                builder.append(inputLine);
-
-            System.out.println(builder.toString());
-            JSONObject o = new JSONObject(builder.toString());
+            final String responseBody = getResponse(urlString.toString());
+            JSONObject o = new JSONObject(responseBody);
             JSONObject response = o.getJSONObject("response");
             JSONArray items = response.getJSONArray("items");
-
-            List<GroupData> groups = new ArrayList<>();
-            for (int i = 0; i < items.length(); i++) {
-                if (items.get(i) instanceof JSONObject) {
-                    GroupData group = new GroupData();
-                    group.setId(items.getJSONObject(i).getLong("id"));
-                    group.setName(items.getJSONObject(i).getString("name"));
-                    group.setCanPost(items.getJSONObject(i).getInt("can_post"));
-
-                    groups.add(group);
-//
-//                    //groupData.setGid(array.getJSONObject(i).getLong("gid"));
-//                    groupData.setName(array.getJSONObject(i).getString("name"));
-//                    groupData.setScreenName(array.getJSONObject(i).getString("screen_name"));
-//                    groupData.setIsClosed(Boolean.parseBoolean(String.valueOf(array.getJSONObject(i).getInt("is_closed"))));
-//                    groupData.setType(array.getJSONObject(i).getString("type"));
-
-                    //groupData.setName(array.getJSONObject(i).getString("photo"));
-                    //groupData.setName(array.getJSONObject(i).getString("photo_medium"));
-                    //groupData.setName(array.getJSONObject(i).getString("photo_big"));
-
-
-                }
-            }
-            //groupsList.setItems(data);
-            return groups;
+            return getGroups(items);
 
         } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public List<GroupData> getGroups(JSONArray items) throws JSONException {
+        List<GroupData> groups = new ArrayList<>();
+        for (int i = 0; i < items.length(); i++) {
+            if (items.get(i) instanceof JSONObject) {
+                GroupData group = getGroupData(items.getJSONObject(i));
+                groups.add(group);
+            }
+        }
+        return groups;
+    }
+
+    public GroupData getGroupData(JSONObject json) throws JSONException {
+        GroupData group = new GroupData();
+        group.setId(json.getLong("id"));
+        group.setName(json.getString("name"));
+        if (json.has("can_post")) {
+            group.setCanPost(json.getInt("can_post"));
+        }
+        if (json.has("type")) {
+            group.setType(json.getString("type"));
+        }
+        if (json.has("members_count")) {
+            group.setMemberCount(json.getInt("members_count"));
+        }
+        return group;
     }
 
     public void leave(Integer group_id) {
@@ -170,6 +138,11 @@ public class GroupsOperations extends Operations {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public String getFields() {
+        String fields = "city, country, place, description, wiki_page, members_count, counters, start_date, finish_date, can_post, can_see_all_posts, activity, status, contacts, links, fixed_post, verified, site, can_create_topic";
+        return fields.replace(" ","");
     }
 //    groups.isMemberВозвращает информацию о том, является ли пользователь участником сообщества.
 //    groups.getByIdВозвращает информацию о заданном сообществе или о нескольких сообществах.
