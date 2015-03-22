@@ -83,14 +83,11 @@
                               <Insets bottom="5.0" top="5.0" />
                            </VBox.margin>
                             </HBox>
-            
-                            <Button onAction="#leaveGroups" text="Выйти">
-                           <VBox.margin>
-                              <Insets left="5.0" />
-                           </VBox.margin>
-                        </Button>
                         </children>
                      </VBox>
+      
+                            <Button layoutX="17.0" layoutY="475.0" onAction="#leaveGroups" text="Выйти" />
+                  <ComboBox fx:id="exitBy" layoutX="4.0" layoutY="435.0" prefWidth="150.0" />
                  </children>
               </AnchorPane>
               <ScrollPane prefHeight="-1.0" prefWidth="-1.0">

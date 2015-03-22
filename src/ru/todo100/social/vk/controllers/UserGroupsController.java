@@ -34,13 +34,14 @@ public class UserGroupsController {
     public TextField sleepTime;
     public ComboBox pageGroup;
 
+    public ComboBox exitBy;
+
     @FXML
     @SuppressWarnings("unchecked")
     void initialize() {
         loggerArea.appendText("Window is opened\n");
 
         groupsList.setItems(data);
-
 
 
         groupIdColumn.setCellValueFactory(new PropertyValueFactory<GroupData, String>("id"));
@@ -66,8 +67,12 @@ public class UserGroupsController {
         country.add("По группа");
         pageGroup.setItems(country);
 
-
-        }
+        final ObservableList<String> exitByData = FXCollections.observableArrayList();
+        exitByData.add("Из всех");
+        exitByData.add("Только из страниц");
+        exitByData.add("Только из групп");
+        exitBy.setItems(exitByData);
+    }
 
     @SuppressWarnings("UnusedParameters")
     public void publish(ActionEvent actionEvent) {
@@ -82,10 +87,21 @@ public class UserGroupsController {
         List<GroupData> userGroups = groups.get();
         WallOperations wall = new WallOperations(Engine.accessToken);
         for (GroupData gd : userGroups) {
-            switch(pageGroup.getSelectionModel().getSelectedIndex()) {
-                case 0: wall.post(gd.getId() * -1, 0, 0, message, attachment); loggerArea.appendText("Publish in: " + gd.getName() + "\n"); break;
-                case 1: if (gd.getCanPost() == 0) wall.post(gd.getId() * -1, 0, 0, message, attachment); loggerArea.appendText("Publish in: " + gd.getName() + "\n");break;
-                case 2: if (gd.getCanPost() == 1) wall.post(gd.getId() * -1, 0, 0, message, attachment); loggerArea.appendText("Publish in: " + gd.getName() + "\n");break;
+
+
+            switch (pageGroup.getSelectionModel().getSelectedIndex()) {
+                case 0:
+                    wall.post(gd.getId() * -1, 0, 0, message, attachment);
+                    loggerArea.appendText("Publish in: " + gd.getName() + "\n");
+                    break;
+                case 1:
+                    if (gd.getCanPost() == 0) wall.post(gd.getId() * -1, 0, 0, message, attachment);
+                    loggerArea.appendText("Publish in: " + gd.getName() + "\n");
+                    break;
+                case 2:
+                    if (gd.getCanPost() == 1) wall.post(gd.getId() * -1, 0, 0, message, attachment);
+                    loggerArea.appendText("Publish in: " + gd.getName() + "\n");
+                    break;
             }
         }
     }
@@ -96,6 +112,13 @@ public class UserGroupsController {
         GroupsOperations groups = new GroupsOperations(Engine.accessToken);
         List<GroupData> userGroups = groups.get();
         for (GroupData gd : userGroups) {
+            if (exitBy.getSelectionModel().getSelectedIndex()==1) {
+                if (gd.getType().equals("page")) {}else {continue;}
+            }
+
+            if (exitBy.getSelectionModel().getSelectedIndex()==2) {
+                if (gd.getType().equals("group")) {}else {continue;}
+            }
             if (gd.getMemberCount() < count) {
                 groups.leave(gd.getId().intValue());
             }

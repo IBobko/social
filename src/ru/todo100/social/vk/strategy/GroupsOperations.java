@@ -49,7 +49,7 @@ public class GroupsOperations extends Operations {
         try {
             StringBuilder urlString = new StringBuilder("https://api.vk.com/method/groups.get?");
             urlString.append("&extended=1");
-            urlString.append("&fields=can_post,members_count");
+            urlString.append("&fields=can_post,members_count,");
 
             urlString.append("&v=5.27&access_token=").append(accessToken);
 
@@ -67,12 +67,15 @@ public class GroupsOperations extends Operations {
             JSONObject response = object.getJSONObject("response");
             JSONArray items = response.getJSONArray("items");
             List<GroupData> groups = new ArrayList<>();
+            System.out.println(response.toString());
             for (int i = 0; i < items.length(); i++) {
+                JSONObject groupData = items.getJSONObject(i);
                 GroupData group = new GroupData();
-                group.setId(items.getJSONObject(i).getLong("id"));
-                group.setName(items.getJSONObject(i).getString("name"));
-                group.setCanPost(items.getJSONObject(i).getInt("can_post"));
-                group.setMemberCount(items.getJSONObject(i).getInt("members_count"));
+                group.setId(groupData.getLong("id"));
+                group.setName(groupData.getString("name"));
+                group.setCanPost(groupData.getInt("can_post"));
+                group.setMemberCount(groupData.getInt("members_count"));
+                group.setType(groupData.getString("type"));
                 groups.add(group);
             }
             return groups;
