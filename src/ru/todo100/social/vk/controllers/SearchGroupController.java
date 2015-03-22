@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
+import javafx.util.StringConverter;
 import org.springframework.util.StringUtils;
 import ru.todo100.social.vk.Engine;
 import ru.todo100.social.vk.datas.DatabaseData;
@@ -23,14 +24,6 @@ import java.util.List;
  * @author Igor Bobko
  */
 public class SearchGroupController {
-    private final ObservableList<GroupData> data =
-            FXCollections.observableArrayList(
-
-            );
-    private final ObservableList<String> country =
-            FXCollections.observableArrayList(
-
-            );
     public TableView groupsList;
     public TextField searchString;
     public TableColumn groupIdColumn;
@@ -39,8 +32,8 @@ public class SearchGroupController {
     public TableColumn join;
     public TextArea logger;
     public CheckBox onlyPostCheckbox;
-    public ComboBox countryList;
-    public ComboBox cityList;
+    public ComboBox<DatabaseData> countryList;
+    public ComboBox<DatabaseData> cityList;
 
     @SuppressWarnings({"unchecked", "Convert2streamapi"})
     @FXML
@@ -49,33 +42,87 @@ public class SearchGroupController {
         groupNameColumn.setCellValueFactory(new PropertyValueFactory<GroupData, String>("name"));
         groupCanPostedColumn.setCellValueFactory(new PropertyValueFactory<GroupData, String>("canPost"));
 
+        countryInit();
+
+
         Callback<TableColumn<TableView, Boolean>, TableCell<TableView, Boolean>> booleanCellFactory =
                 p -> new BooleanCell();
 
         join.setCellValueFactory(new PropertyValueFactory<TableView, Boolean>(""));
         join.setCellFactory(booleanCellFactory);
 
+    }
 
+    void countryInit() {
         DatabaseOperations database = new DatabaseOperations(Engine.accessToken);
-
-        for (DatabaseData cnt : database.getCountries()) {
-            country.add(cnt.getTitle());
-        }
+        ObservableList<DatabaseData> country = FXCollections.observableArrayList();
+        country.addAll(database.getCountries());
         countryList.setItems(country);
-
-        countryList.valueProperty().addListener(new ChangeListener<String>() {
+        countryList.setCellFactory(new Callback<ListView<DatabaseData>, ListCell<DatabaseData>>() {
             @Override
-            public void changed(ObservableValue ov, String t, String t1) {
-                DatabaseOperations database = new DatabaseOperations(Engine.accessToken);
-                cityList.getItems().clear();
-                for (DatabaseData cnt : database.getCountries()) {
-                    if (cnt.getTitle().equals(t1)) {
-                        List<DatabaseData> cities = database.getCities(cnt.getId());
-                        for (DatabaseData city : cities) {
-                            cityList.getItems().add(city.getTitle());
+            public ListCell<DatabaseData> call(ListView<DatabaseData> param) {
+                return new ListCell<DatabaseData>(){
+                    @Override
+                    protected void updateItem(DatabaseData item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item == null || empty) {
+                            setText(null);
+                        } else {
+                            setText(item.getTitle());
                         }
                     }
-                }
+                };
+            }
+
+        });
+        countryList.setConverter(new StringConverter<DatabaseData>() {
+            @Override
+            public String toString(DatabaseData object) {
+                return object.getTitle();
+            }
+
+            @Override
+            public DatabaseData fromString(String string) {
+                return null;
+            }
+        });
+
+        cityList.setCellFactory(new Callback<ListView<DatabaseData>, ListCell<DatabaseData>>() {
+            @Override
+            public ListCell<DatabaseData> call(ListView<DatabaseData> param) {
+                return new ListCell<DatabaseData>(){
+                    @Override
+                    protected void updateItem(DatabaseData item, boolean empty) {
+                        super.updateItem(item, empty);
+                        if (item == null || empty) {
+                            setText(null);
+                        } else {
+                            setText(item.getTitle());
+                        }
+                    }
+                };
+            }
+
+        });
+        cityList.setConverter(new StringConverter<DatabaseData>() {
+            @Override
+            public String toString(DatabaseData object) {
+                return object.getTitle();
+            }
+
+            @Override
+            public DatabaseData fromString(String string) {
+                return null;
+            }
+        });
+        countryList.valueProperty().addListener(new ChangeListener<DatabaseData>() {
+            @Override
+            public void changed(ObservableValue<? extends DatabaseData> observable, DatabaseData oldValue, DatabaseData newValue) {
+                DatabaseOperations database = new DatabaseOperations(Engine.accessToken);
+                List<DatabaseData> cities = database.getCities(newValue.getId());
+                ObservableList<DatabaseData> citiesData = FXCollections.observableArrayList();
+                citiesData.addAll(cities);
+                cityList.setItems(citiesData);
             }
         });
     }
@@ -95,27 +142,13 @@ public class SearchGroupController {
         Integer country_id = null;
         Integer city_id = null;
 
-        String country = (String) countryList.getValue();
-        String city = (String) cityList.getValue();
-
-        DatabaseOperations database = new DatabaseOperations(Engine.accessToken);
-
-        if (!StringUtils.isEmpty(country)) {
-            for (DatabaseData cnt : database.getCountries()) {
-                if (cnt.getTitle().equals(country)) {
-                    country_id = cnt.getId();
-                }
-            }
+        if (countryList.getValue()!=null) {
+            country_id = countryList.getValue().getId();
         }
 
-        if (!StringUtils.isEmpty(city)) {
-            for (DatabaseData cnt : database.getCities(country_id)) {
-                if (cnt.getTitle().equals(city)) {
-                    city_id = cnt.getId();
-                }
-            }
+        if (cityList.getValue() != null) {
+            city_id = cityList.getValue().getId();
         }
-
         final List<GroupData> groupsResult = new ArrayList<>();
         for (int i = 0; i < maxCountIter; i++) {
             final List<GroupData> result = groups.search(searchString, i * count, maxCount, country_id, city_id);
@@ -128,6 +161,7 @@ public class SearchGroupController {
                 break;
             }
         }
+        final ObservableList<GroupData> data = FXCollections.observableArrayList();
         data.addAll(groupsResult);
         groupsList.setItems(data);
     }
@@ -136,13 +170,9 @@ public class SearchGroupController {
     public void invite(ActionEvent actionEvent) {
         GroupsOperations groups = new GroupsOperations(Engine.accessToken);
         for (int i = 0; i < groupsList.getItems().size(); i++) {
-
-
             GroupData group = (GroupData) groupsList.getItems().get(i);
             groups.join(group.getId());
             logger.appendText("You joined in " + group.getName() + "\n");
-
-
         }
     }
 
