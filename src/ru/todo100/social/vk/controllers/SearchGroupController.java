@@ -32,6 +32,7 @@ public class SearchGroupController {
     public TableColumn join;
     public TextArea logger;
     public CheckBox onlyPostCheckbox;
+    public TableColumn groupType;
     @FXML
     private ComboBox<DatabaseData> countryList;
     @FXML
@@ -41,6 +42,8 @@ public class SearchGroupController {
     @FXML
     void initialize() {
         countryInit();
+        groupType.setCellValueFactory(new PropertyValueFactory<GroupData, String>("type"));
+
         groupIdColumn.setCellValueFactory(new PropertyValueFactory<GroupData, String>("id"));
         groupNameColumn.setCellValueFactory(new PropertyValueFactory<GroupData, String>("name"));
         groupCanPostedColumn.setCellValueFactory(new PropertyValueFactory<GroupData, String>("canPost"));
@@ -127,7 +130,10 @@ public class SearchGroupController {
 
 
     @SuppressWarnings("unchecked")
-    public void searchAction() {
+    public void searchAction() throws InterruptedException {
+        final ObservableList<GroupData> data = FXCollections.observableArrayList();
+        groupsList.setItems(data);
+        groupsList.getItems().clear();
         final String searchString = this.searchString.getText();
         if (StringUtils.isEmpty(searchString)) {
             return;
@@ -148,22 +154,27 @@ public class SearchGroupController {
         if (cityList.getValue() != null) {
             city_id = cityList.getValue().getId();
         }
+        System.out.println(onlyPostCheckbox.isSelected());
+
         final List<GroupData> groupsResult = new ArrayList<>();
         for (int i = 0; i < maxCountIter; i++) {
             final List<GroupData> result = groups.search(searchString, i * count, maxCount, country_id, city_id);
             for (GroupData group : result) {
-                if (onlyPostCheckbox.isSelected() && group.getCanPost() != 0){
+
+                if (onlyPostCheckbox.isSelected() && group.getCanPost() == 0){
                     continue;
                 }
+                groupsList.getItems().add(group);
+                Thread.sleep(10);
                 groupsResult.add(group);
             }
             if (!(groupsResult.size() < maxCount && result.size() == maxCount)) {
                 break;
             }
         }
-        final ObservableList<GroupData> data = FXCollections.observableArrayList();
-        data.addAll(groupsResult);
-        groupsList.setItems(data);
+
+
+
     }
 
     @SuppressWarnings("UnusedParameters")

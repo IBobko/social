@@ -27,9 +27,11 @@ import java.io.IOException;
 public class LandingController {
     final String yourNameText = "Вы вошли как: #YOUR_VK_NAME";
     private final String clientId = "4742608";
-    private final String login = "+79651167439";
-    private final String password = "ineler200";
+    private final String login = "79686264715";
+    private final String password = "erjh4iurh48ut5g";
     public GridPane gridPane;
+
+
 
     @FXML
     private Label yourNameLabel;

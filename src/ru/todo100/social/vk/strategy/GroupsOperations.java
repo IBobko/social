@@ -35,6 +35,7 @@ public class GroupsOperations extends Operations {
                 builder.append(inputLine);
             }
             JSONObject object = new JSONObject(builder.toString());
+            System.out.println(object.toString());
             if (object.has("response") && object.getInt("response") == 1) {
                 return 1;
             }
@@ -63,6 +64,7 @@ public class GroupsOperations extends Operations {
             while ((inputLine = in.readLine()) != null) {
                 builder.append(inputLine);
             }
+            System.out.println(builder.toString());
             JSONObject object = new JSONObject(builder.toString());
             JSONObject response = object.getJSONObject("response");
             JSONArray items = response.getJSONArray("items");
@@ -73,8 +75,12 @@ public class GroupsOperations extends Operations {
                 GroupData group = new GroupData();
                 group.setId(groupData.getLong("id"));
                 group.setName(groupData.getString("name"));
-                group.setCanPost(groupData.getInt("can_post"));
-                group.setMemberCount(groupData.getInt("members_count"));
+                if (groupData.has("can_post")) {
+                    group.setCanPost(groupData.getInt("can_post"));
+                }
+                if (groupData.has("members_count")) {
+                    group.setMemberCount(groupData.getInt("members_count"));
+                }
                 group.setType(groupData.getString("type"));
                 groups.add(group);
             }

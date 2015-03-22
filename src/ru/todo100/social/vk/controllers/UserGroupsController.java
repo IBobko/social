@@ -85,25 +85,26 @@ public class UserGroupsController {
         GroupsOperations groups = new GroupsOperations(Engine.accessToken);
 
         List<GroupData> userGroups = groups.get();
+
+        System.out.println(pageGroup.getSelectionModel().getSelectedIndex());
         WallOperations wall = new WallOperations(Engine.accessToken);
         for (GroupData gd : userGroups) {
+            System.out.println(gd.getName());
+            if (pageGroup.getSelectionModel().getSelectedIndex() == -1) {
+                wall.post(gd.getId() * -1, 0, 0, message, attachment);
+                loggerArea.appendText("Publish in: " + gd.getName() + "\n");
+            }
+            if (pageGroup.getSelectionModel().getSelectedIndex() == 0) {
+                if (gd.getCanPost() == 0) wall.post(gd.getId() * -1, 0, 0, message, attachment);
+                loggerArea.appendText("Publish in: " + gd.getName() + "\n");
+            }
 
-
-            switch (pageGroup.getSelectionModel().getSelectedIndex()) {
-                case 0:
-                    wall.post(gd.getId() * -1, 0, 0, message, attachment);
-                    loggerArea.appendText("Publish in: " + gd.getName() + "\n");
-                    break;
-                case 1:
-                    if (gd.getCanPost() == 0) wall.post(gd.getId() * -1, 0, 0, message, attachment);
-                    loggerArea.appendText("Publish in: " + gd.getName() + "\n");
-                    break;
-                case 2:
-                    if (gd.getCanPost() == 1) wall.post(gd.getId() * -1, 0, 0, message, attachment);
-                    loggerArea.appendText("Publish in: " + gd.getName() + "\n");
-                    break;
+            if (pageGroup.getSelectionModel().getSelectedIndex()==1) {
+                if (gd.getCanPost() == 1) wall.post(gd.getId() * -1, 0, 0, message, attachment);
+                loggerArea.appendText("Publish in: " + gd.getName() + "\n");
             }
         }
+        System.out.println("done");
     }
 
     @SuppressWarnings("UnusedParameters")
@@ -112,11 +113,11 @@ public class UserGroupsController {
         GroupsOperations groups = new GroupsOperations(Engine.accessToken);
         List<GroupData> userGroups = groups.get();
         for (GroupData gd : userGroups) {
-            if (exitBy.getSelectionModel().getSelectedIndex()==1) {
+            if (exitBy.getSelectionModel().getSelectedIndex()==0) {
                 if (gd.getType().equals("page")) {}else {continue;}
             }
 
-            if (exitBy.getSelectionModel().getSelectedIndex()==2) {
+            if (exitBy.getSelectionModel().getSelectedIndex()==1) {
                 if (gd.getType().equals("group")) {}else {continue;}
             }
             if (gd.getMemberCount() < count) {

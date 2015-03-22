@@ -50,6 +50,7 @@
         <TableView fx:id="groupsList" GridPane.rowIndex="2">
             <columns>
                 <TableColumn fx:id="join" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" resizable="false" />
+                <TableColumn fx:id="groupType" maxWidth="80.0" minWidth="80.0" resizable="false" text="ID" />
                 <TableColumn fx:id="groupIdColumn" maxWidth="80.0" minWidth="80.0" resizable="false" text="ID" />
                 <TableColumn fx:id="groupNameColumn" text="Наименование" />
                 <TableColumn fx:id="groupCanPostedColumn" minWidth="40.0" prefWidth="40.0" text="Можно постить?" />
