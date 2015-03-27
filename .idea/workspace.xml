@@ -6,33 +6,23 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="abf1a9c5-0006-4013-acfe-a417f2000778" name="Default" comment="Region added">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-codec-1.10.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/commons-logging-1.2.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/httpclient-4.1.2.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/httpclient-cache-4.4.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/httpcore-4.4.1.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/httpmime-4.4.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/log4j-1.2.17.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/todo100/social/AntiCaptcha.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ru/todo100/social/vk/components/GroupTypeDataComboBox.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/log4j.properties" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/vkontakte.properties" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/JavaFXApp/JavaFXApp.jar" afterPath="$PROJECT_DIR$/out/artifacts/JavaFXApp/JavaFXApp.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/todo100/social/vk/Engine.java" afterPath="$PROJECT_DIR$/src/ru/todo100/social/vk/Engine.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/todo100/social/vk/strategy/GroupsOperations.java" afterPath="$PROJECT_DIR$/src/ru/todo100/social/vk/strategy/GroupsOperations.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/JavaFXApp/JavaFXApp.jnlp" afterPath="$PROJECT_DIR$/out/artifacts/JavaFXApp/JavaFXApp.jnlp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/LandingController.java" afterPath="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/LandingController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/todo100/social/vk/Main.java" afterPath="$PROJECT_DIR$/src/ru/todo100/social/vk/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/todo100/social/vk/strategy/Operations.java" afterPath="$PROJECT_DIR$/src/ru/todo100/social/vk/strategy/Operations.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/SearchGroupController.java" afterPath="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/SearchGroupController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/UserGroupsController.java" afterPath="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/UserGroupsController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Vkontakte.iml" afterPath="$PROJECT_DIR$/Vkontakte.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/igor.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/igor.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/landing.fxml" afterPath="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/landing.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/searchGroups.fxml" afterPath="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/searchGroups.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/userGroups.fxml" afterPath="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/userGroups.fxml" />
+    <list default="true" id="abf1a9c5-0006-4013-acfe-a417f2000778" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/JavaFXApp/commons-codec-1.10.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/JavaFXApp/lib/commons-codec-1.10.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/JavaFXApp/commons-logging-1.2.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/JavaFXApp/lib/commons-logging-1.2.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/JavaFXApp/httpclient-4.1.2.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/JavaFXApp/lib/httpclient-4.1.2.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/JavaFXApp/httpclient-cache-4.4.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/JavaFXApp/lib/httpclient-cache-4.4.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/JavaFXApp/httpcore-4.4.1.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/JavaFXApp/lib/httpcore-4.4.1.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/JavaFXApp/httpmime-4.4.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/JavaFXApp/lib/httpmime-4.4.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/JavaFXApp/log4j-1.2.17.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/JavaFXApp/lib/log4j-1.2.17.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/JavaFXApp/lib/org.json-20120521.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/out/artifacts/JavaFXApp/lib/spring-core-4.0.8.RELEASE.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Vkontakte.iws" />
@@ -417,6 +407,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Vkontakte" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Vkontakte" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -759,7 +763,7 @@
       <workItem from="1427097847598" duration="12000" />
       <workItem from="1427097880139" duration="54000" />
       <workItem from="1427098367121" duration="12104000" />
-      <workItem from="1427374661307" duration="24564000" />
+      <workItem from="1427374661307" duration="24770000" />
     </task>
     <task id="LOCAL-00001" summary="VK-2">
       <created>1427029674624</created>
@@ -815,11 +819,17 @@
       <option name="project" value="LOCAL" />
       <updated>1427051351777</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Region added">
+      <created>1427477557963</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1427477557963</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="66029000" />
+    <option name="totallyTimeSpent" value="66235000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -919,6 +929,8 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
@@ -1358,10 +1370,10 @@
         <settings>
           <artifact-editor>
             <show-content>
-              <type id="artifact" />
               <type id="library" />
-              <type id="jpa-descriptors" />
+              <type id="artifact" />
               <type id="javaee-facet-resources" />
+              <type id="jpa-descriptors" />
             </show-content>
           </artifact-editor>
           <last-edited>JavaFXApp</last-edited>
