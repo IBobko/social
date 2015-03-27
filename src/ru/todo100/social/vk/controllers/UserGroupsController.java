@@ -1,9 +1,13 @@
 package ru.todo100.social.vk.controllers;
 
+import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
+import com.sun.javafx.application.HostServicesDelegate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import ru.todo100.social.vk.Engine;
@@ -11,12 +15,18 @@ import ru.todo100.social.vk.datas.GroupData;
 import ru.todo100.social.vk.strategy.GroupsOperations;
 import ru.todo100.social.vk.strategy.WallOperations;
 
+import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.List;
+import java.util.ResourceBundle;
 
 /**
  * @author Igor Bobko
  */
-public class UserGroupsController {
+public class UserGroupsController implements Initializable {
     private final ObservableList<GroupData> data =
             FXCollections.observableArrayList(
 
@@ -36,43 +46,7 @@ public class UserGroupsController {
 
     public ComboBox exitBy;
 
-    @FXML
-    @SuppressWarnings("unchecked")
-    void initialize() {
-        loggerArea.appendText("Window is opened\n");
 
-        groupsList.setItems(data);
-
-
-        groupIdColumn.setCellValueFactory(new PropertyValueFactory<GroupData, String>("id"));
-        groupNameColumn.setCellValueFactory(new PropertyValueFactory<GroupData, String>("name"));
-        groupCanPostedColumn.setCellValueFactory(new PropertyValueFactory<GroupData, String>("canPost"));
-        groupMemberCount.setCellValueFactory(new PropertyValueFactory<GroupData, String>("memberCount"));
-
-
-        GroupsOperations groups = new GroupsOperations(Engine.accessToken);
-
-        List<GroupData> userGroups = groups.get();
-
-
-        data.addAll(userGroups);
-
-
-        final ObservableList<String> country =
-                FXCollections.observableArrayList(
-
-                );
-        country.add("Везде");
-        country.add("По страница");
-        country.add("По группа");
-        pageGroup.setItems(country);
-
-        final ObservableList<String> exitByData = FXCollections.observableArrayList();
-        exitByData.add("Из всех");
-        exitByData.add("Только из страниц");
-        exitByData.add("Только из групп");
-        exitBy.setItems(exitByData);
-    }
 
     @SuppressWarnings("UnusedParameters")
     public void publish(ActionEvent actionEvent) {
@@ -114,10 +88,14 @@ public class UserGroupsController {
         List<GroupData> userGroups = groups.get();
         for (GroupData gd : userGroups) {
             if (exitBy.getSelectionModel().getSelectedIndex()==0) {
+                groups.leave(gd.getId().intValue());
+                continue;
+            }
+            if (exitBy.getSelectionModel().getSelectedIndex()==1) {
                 if (gd.getType().equals("page")) {}else {continue;}
             }
 
-            if (exitBy.getSelectionModel().getSelectedIndex()==1) {
+            if (exitBy.getSelectionModel().getSelectedIndex()==2) {
                 if (gd.getType().equals("group")) {}else {continue;}
             }
             if (gd.getMemberCount() < count) {
@@ -125,6 +103,62 @@ public class UserGroupsController {
             }
         }
     }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        loggerArea.appendText("Window is opened\n");
+
+        groupsList.setItems(data);
+
+
+        groupIdColumn.setCellValueFactory(new PropertyValueFactory<GroupData, String>("id"));
+        groupNameColumn.setCellValueFactory(new PropertyValueFactory<GroupData, String>("name"));
+        groupCanPostedColumn.setCellValueFactory(new PropertyValueFactory<GroupData, String>("canPost"));
+        groupMemberCount.setCellValueFactory(new PropertyValueFactory<GroupData, String>("memberCount"));
+
+
+        GroupsOperations groups = new GroupsOperations(Engine.accessToken);
+
+        List<GroupData> userGroups = groups.get();
+
+
+
+        data.addAll(userGroups);
+
+
+        final ObservableList<String> country =
+                FXCollections.observableArrayList(
+
+                );
+        country.add("Везде");
+        country.add("По страница");
+        country.add("По группа");
+        pageGroup.setItems(country);
+
+        final ObservableList<String> exitByData = FXCollections.observableArrayList();
+        exitByData.add("Из всех");
+        exitByData.add("Только из страниц");
+        exitByData.add("Только из групп");
+        exitBy.setItems(exitByData);
+
+
+
+
+
+    }
+
+    public void onGroupClick(javafx.scene.input.MouseEvent event) {
+
+
+            if (event.getClickCount() == 2) {
+                GroupData groupData = (GroupData) groupsList.getSelectionModel().getSelectedItem();
+                HostServicesDelegate hostServices = HostServicesFactory.getInstance(Engine.application);
+                String url = "http://vk.com/club" + groupData.getId();
+                hostServices.showDocument(url);
+            }
+
+    }
+
 }
 
 

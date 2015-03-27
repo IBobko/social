@@ -38,18 +38,35 @@
                                 <ComboBox fx:id="cityList" prefWidth="150.0" GridPane.columnIndex="1"
                                           GridPane.rowIndex="1"/>
                             </children>
+                            <columnConstraints>
+                                <ColumnConstraints/>
+                                <ColumnConstraints/>
+                            </columnConstraints>
+                            <rowConstraints>
+                                <RowConstraints/>
+                                <RowConstraints/>
+                            </rowConstraints>
                         </GridPane>
                     </content>
                 </TitledPane>
+                <TitledPane collapsible="false" text="Типы групп" VBox.vgrow="ALWAYS">
+                    <HBox spacing="10">
+                        <CheckBox fx:id="allGroupsCheckBox" text="Все"/>
+                        <CheckBox fx:id="groupGroupsCheckBox" text="Группы"/>
+                        <CheckBox fx:id="pageGroupsCheckBox" text="Страница"/>
+                        <CheckBox fx:id="eventGroupsCheckBox" text="События"/>
+                    </HBox>
+                </TitledPane>
+
             </children>
         </VBox>
 
-        <TableView fx:id="groupsList" GridPane.rowIndex="2">
+        <TableView fx:id="groupsList" GridPane.rowIndex="2" onMouseClicked="#groupClick">
             <columns>
                 <TableColumn fx:id="join" maxWidth="40.0" minWidth="40.0" prefWidth="40.0" resizable="false"/>
                 <TableColumn fx:id="groupType" maxWidth="80.0" minWidth="80.0" resizable="false" text="Тип"/>
                 <TableColumn fx:id="groupIdColumn" maxWidth="80.0" minWidth="80.0" resizable="false" text="ID"/>
-                <TableColumn fx:id="groupNameColumn" text="Наименование"/>
+                <TableColumn fx:id="groupNameColumn" text="Наименование" />
                 <TableColumn fx:id="groupCanPostedColumn" minWidth="40.0" prefWidth="40.0" text="Можно постить?"/>
             </columns>
             <columnResizePolicy>

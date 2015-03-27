@@ -59,7 +59,7 @@
                  <children>
                      <VBox AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                         <children>
-                            <TableView fx:id="groupsList" VBox.vgrow="ALWAYS">
+                            <TableView fx:id="groupsList" VBox.vgrow="ALWAYS" onMouseClicked="#onGroupClick">
                                 <columns>
                                     <TableColumn fx:id="groupIdColumn" text="ID" />
                                     <TableColumn fx:id="groupNameColumn" text="Наименование" />

@@ -8,7 +8,23 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="JavaFXApp.jar" size="40515" download="eager" />
+    <jar href="JavaFXApp.jar" size="99376" download="eager" />
+    <jar href="commons-codec-1.10.jar" size="284184" download="eager" />
+    <jar href="commons-logging-1.2.jar" size="61829" download="eager" />
+    <jar href="httpclient-4.1.2.jar" size="352254" download="eager" />
+    <jar href="httpclient-cache-4.4.jar" size="158963" download="eager" />
+    <jar href="httpcore-4.4.1.jar" size="322234" download="eager" />
+    <jar href="httpmime-4.4.jar" size="40627" download="eager" />
+    <jar href="lib/commons-codec-1.10.jar" size="284184" download="eager" />
+    <jar href="lib/commons-logging-1.2.jar" size="61829" download="eager" />
+    <jar href="lib/httpclient-4.1.2.jar" size="352254" download="eager" />
+    <jar href="lib/httpclient-cache-4.4.jar" size="158963" download="eager" />
+    <jar href="lib/httpcore-4.4.1.jar" size="322234" download="eager" />
+    <jar href="lib/httpmime-4.4.jar" size="40627" download="eager" />
+    <jar href="lib/log4j-1.2.17.jar" size="489883" download="eager" />
+    <jar href="lib/org.json-20120521.jar" size="40375" download="eager" />
+    <jar href="lib/spring-core-4.0.8.RELEASE.jar" size="978137" download="eager" />
+    <jar href="log4j-1.2.17.jar" size="489883" download="eager" />
     <jar href="org.json-20120521.jar" size="40375" download="eager" />
     <jar href="spring-core-4.0.8.RELEASE.jar" size="978137" download="eager" />
   </resources>

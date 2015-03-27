@@ -1,5 +1,6 @@
 package ru.todo100.social.vk.strategy;
 
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -13,11 +14,15 @@ import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
+
+import org.apache.log4j.Logger;
+
 /**
  * @author Igor Bobko on 08.02.15.
  * GroupsOperations
  */
 public class GroupsOperations extends Operations {
+   // private static Logger LOG = Logger.getLogger(GroupsOperations.class);
     @SuppressWarnings("UnusedDeclaration")
     enum Type {
         event,
@@ -29,18 +34,15 @@ public class GroupsOperations extends Operations {
     }
 
     public int join(Long group_id) {
+
         try {
-            URL url = new URL("https://api.vk.com/method/groups.join?group_id=" + group_id
-                    + "&v=5.27&access_token=" + accessToken);
-            URLConnection connection = url.openConnection();
-            BufferedReader in = new BufferedReader(new InputStreamReader(
-                    connection.getInputStream()));
-            String inputLine;
-            StringBuilder builder = new StringBuilder();
-            while ((inputLine = in.readLine()) != null) {
-                builder.append(inputLine);
-            }
-            JSONObject object = new JSONObject(builder.toString());
+            final StringBuilder urlString = getStringBuilder("groups.join");
+            urlString.append("&group_id=1").append(group_id);
+
+            String responseBody = getResponse(urlString.toString());
+
+
+            JSONObject object = new JSONObject(responseBody);
             System.out.println(object.toString());
             if (object.has("response") && object.getInt("response") == 1) {
                 return 1;
@@ -69,7 +71,7 @@ public class GroupsOperations extends Operations {
         return null;
     }
 
-    public List<GroupData> search(String search, Integer offset, Integer count, Integer country_id, Integer city_id) {
+    public List<GroupData> search(String search, Integer offset, Integer count, Integer country_id, Integer city_id,String type) {
         try {
             final StringBuilder urlString = getStringBuilder("groups.search");
             urlString.append("&q=").append(search);
@@ -88,7 +90,7 @@ public class GroupsOperations extends Operations {
             if (city_id != null) {
                 urlString.append("&city_id=").append(city_id);
             }
-
+         //   LOG.info(urlString.toString());
             final String responseBody = getResponse(urlString.toString());
             JSONObject o = new JSONObject(responseBody);
             JSONObject response = o.getJSONObject("response");

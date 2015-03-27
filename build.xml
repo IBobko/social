@@ -2,7 +2,7 @@
 <project name="vkontakte" default="all">
   
   
-  <property file="vkontakte.properties"/>
+  <property file="log4j.properties"/>
   <!-- Uncomment the following property if no tests compilation is needed -->
   <!-- 
   <property name="skip.tests" value="true"/>

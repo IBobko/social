@@ -6,4 +6,5 @@ package ru.todo100.social.vk;
 public class Engine {
     public static String accessToken;
 
+    public static Main application;
 }

@@ -22,6 +22,9 @@ import ru.todo100.social.vk.datas.UserData;
 import ru.todo100.social.vk.strategy.UserOperations;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 @SuppressWarnings({"FieldCanBeLocal", "UnusedParameters", "SpellCheckingInspection"})
 public class LandingController {
@@ -30,8 +33,6 @@ public class LandingController {
     private final String login = "79686264715";
     private final String password = "erjh4iurh48ut5g";
     public GridPane gridPane;
-
-
 
     @FXML
     private Label yourNameLabel;
@@ -44,6 +45,28 @@ public class LandingController {
 
     @FXML
     private void initialize() throws IOException {
+
+
+
+
+//        try {
+//            URI uri = new URI("http://yandex.ru");
+////            java.awt.Desktop.getDesktop().browse(uri);
+//
+//
+//                Class desktopClazz = Class.forName("java.awt.Desktop");
+//                Object desktop = desktopClazz.getMethod("getDesktop").invoke(null);
+//
+//                Method browseMethod = desktopClazz.getMethod("browse", URI.class);
+//            browseMethod.invoke(desktop, new URI("http://yandex.ru"));
+//            } catch (Exception e) {
+//             //       println("Upgrade to Java 6 or later to launch hyperlinks: {url}");
+//            }
+////        } catch (URISyntaxException e) {
+////            e.printStackTrace();
+////        } catch (IOException e) {
+////            e.printStackTrace();
+////        }
 
         webView.getEngine().load("https://oauth.vk.com/authorize?client_id=" + this.clientId + "&scope=friends,messages,wall,groups&redirect_uri=https://oauth.vk.com/blank.html&display=page&v=5.27N&response_type=token");
         webView.getEngine().getLoadWorker().stateProperty().addListener(new ChangeListener<Worker.State>() {
@@ -68,11 +91,11 @@ public class LandingController {
                         }
                         if (element.getNodeValue().equals("pass")) {
                             HTMLInputElement passwordElement = (HTMLInputElement) nodes.item(i);
-                            passwordElement.setValue(password);
+                            //passwordElement.setValue(password);
                         }
                         if (element.getNodeValue().equals("submit")) {
                             HTMLInputElement submitElement = (HTMLInputElement) nodes.item(i);
-                            submitElement.click();
+                            //submitElement.click();
                         }
                     }
                 }
@@ -110,4 +133,16 @@ public class LandingController {
         }
     }
 
+    public void exitAction(ActionEvent actionEvent) {
+        java.net.CookieManager manager = new java.net.CookieManager();
+        java.net.CookieHandler.setDefault(manager);
+        manager.getCookieStore().removeAll();
+
+        webView.setVisible(true);
+        try {
+            this.initialize();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
