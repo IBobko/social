@@ -20,9 +20,9 @@
         <RowConstraints />
     </rowConstraints>
     <children>
-      <HBox prefHeight="100.0" prefWidth="200.0" GridPane.rowIndex="1">
+      <HBox spacing="10" GridPane.rowIndex="1">
          <children>
-              <Label fx:id="yourNameLabel" text="Вход не выполнен">
+              <Label fx:id="yourNameLabel" text="Вход не выполнен" onMouseClicked="#onContactClicked">
                   <font>
                       <Font size="16.0" />
                   </font>

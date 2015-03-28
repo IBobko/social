@@ -9,6 +9,7 @@ import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.charset.Charset;
 
 /**
  * @author Igor Bobko
@@ -21,10 +22,12 @@ public class Operations {
     }
 
     public String getResponse(String urlString) throws IOException {
+        urlString = java.net.URLDecoder.decode(urlString, "UTF-8");
         URL url = new URL(urlString);
         URLConnection connection = url.openConnection();
+        Charset charset = Charset.forName("UTF8");
         BufferedReader in = new BufferedReader(new InputStreamReader(
-                connection.getInputStream()));
+                connection.getInputStream(),charset));
         String inputLine;
         StringBuilder builder = new StringBuilder();
         while ((inputLine = in.readLine()) != null) {

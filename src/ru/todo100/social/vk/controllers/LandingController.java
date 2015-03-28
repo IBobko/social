@@ -1,9 +1,12 @@
 package ru.todo100.social.vk.controllers;
 
+import com.sun.deploy.uitoolkit.impl.fx.HostServicesFactory;
+import com.sun.javafx.application.HostServicesDelegate;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,6 +21,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.w3c.dom.html.HTMLInputElement;
 import ru.todo100.social.vk.Engine;
+import ru.todo100.social.vk.datas.GroupData;
 import ru.todo100.social.vk.datas.UserData;
 import ru.todo100.social.vk.strategy.UserOperations;
 
@@ -143,6 +147,20 @@ public class LandingController {
             this.initialize();
         } catch (IOException e) {
             e.printStackTrace();
+        }
+        Engine.accessToken = null;
+    }
+
+    public void onContactClicked(javafx.scene.input.MouseEvent event) {
+        if (event.getClickCount() == 2) {
+            if (Engine.accessToken!=null) {
+                UserOperations userOperations = new UserOperations(Engine.accessToken);
+                UserData user = userOperations.get();
+
+                HostServicesDelegate hostServices = HostServicesFactory.getInstance(Engine.application);
+                String url = "http://vk.com/id" + user.getId();
+                hostServices.showDocument(url);
+            }
         }
     }
 }
