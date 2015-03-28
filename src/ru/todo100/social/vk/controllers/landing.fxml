@@ -22,7 +22,7 @@
     <children>
       <HBox spacing="10" GridPane.rowIndex="1">
          <children>
-              <Label fx:id="yourNameLabel" text="Вход не выполнен" onMouseClicked="#onContactClicked">
+              <Label fx:id="yourNameLabel" onMouseClicked="#onContactClicked" text="Вход не выполнен">
                   <font>
                       <Font size="16.0" />
                   </font>
@@ -37,10 +37,10 @@
             <menus>
                 <Menu mnemonicParsing="false" text="Контакт">
                     <items>
-                        <MenuItem mnemonicParsing="false" text="Close" />
+                        <MenuItem mnemonicParsing="false" onAction="#closeWindowAction" text="Close" />
                     </items>
                 </Menu>
-                <Menu mnemonicParsing="false" text="Группы">
+                <Menu fx:id="groupsMenu" mnemonicParsing="false" text="Группы">
                     <items>
                         <MenuItem fx:id="showUserGroups" mnemonicParsing="false" onAction="#showUserGroups" text="Посмотреть группы пользователя" />
                         <MenuItem fx:id="searchGroups" mnemonicParsing="false" onAction="#searchGroups" text="Поиск групп" />
