@@ -1,5 +1,14 @@
 package ru.todo100.social.vk.strategy;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import ru.todo100.social.vk.datas.DatabaseData;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by igor on 22.03.15.
  */
@@ -8,9 +17,23 @@ public class VideoOperations extends Operations{
         super(accessToken);
     }
 
+
 //    video.getВозвращает информацию о видеозаписях.
 //    video.editРедактирует данные видеозаписи на странице пользователя.
-//    video.addДобавляет видеозапись в список пользователя.
+    public void add(Long target_id,Integer video_id,Integer owner_id) {
+        try {
+            StringBuilder urlString = getStringBuilder("video.add");
+            urlString.append("&").append("owner_id").append("=").append(owner_id);
+            urlString.append("&").append("video_id").append("=").append(video_id);
+            urlString.append("&").append("target_id").append("=").append(target_id);
+            String responseBody = getResponse(urlString.toString());
+            JSONObject object = new JSONObject(responseBody);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 //    video.saveВозвращает адрес сервера (необходимый для загрузки) и данные видеозаписи.
 //    video.deleteУдаляет видеозапись со страницы пользователя.
 //    video.restoreВосстанавливает удаленную видеозапись.

@@ -34,8 +34,8 @@ import java.util.ResourceBundle;
 public class LandingController implements Initializable {
     final String yourNameText = "Вы вошли как: #YOUR_VK_NAME";
     private final String clientId = "4742608";
-    private final String login = "79686264715";
-    private final String password = "erjh4iurh48ut5g";
+    private final String login = "79686398038";
+    private final String password = "kjfry4hu575gt5hy";
     public GridPane gridPane;
     public Menu groupsMenu;
 
@@ -62,7 +62,7 @@ public class LandingController implements Initializable {
 
 
         groupsMenu.setDisable(true);
-        webView.getEngine().load("https://oauth.vk.com/authorize?client_id=" + this.clientId + "&scope=friends,messages,wall,groups&redirect_uri=https://oauth.vk.com/blank.html&display=page&v=5.27N&response_type=token");
+        webView.getEngine().load("https://oauth.vk.com/authorize?client_id=" + this.clientId + "&scope=friends,messages,wall,groups,video&redirect_uri=https://oauth.vk.com/blank.html&display=page&v=5.27N&response_type=token");
         webView.getEngine().getLoadWorker().stateProperty().addListener(new ChangeListener<Worker.State>() {
             @Override
             public void changed(ObservableValue<? extends Worker.State> observable, Worker.State oldValue, Worker.State newValue) {
@@ -86,11 +86,11 @@ public class LandingController implements Initializable {
                         }
                         if (element.getNodeValue().equals("pass")) {
                             HTMLInputElement passwordElement = (HTMLInputElement) nodes.item(i);
-                            //passwordElement.setValue(password);
+                            passwordElement.setValue(password);
                         }
                         if (element.getNodeValue().equals("submit")) {
                             HTMLInputElement submitElement = (HTMLInputElement) nodes.item(i);
-                            //submitElement.click();
+                            submitElement.click();
                         }
                     }
                 }

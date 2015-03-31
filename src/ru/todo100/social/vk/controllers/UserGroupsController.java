@@ -11,11 +11,14 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import ru.todo100.social.vk.Engine;
 import ru.todo100.social.vk.datas.GroupData;
 import ru.todo100.social.vk.strategy.GroupsOperations;
+import ru.todo100.social.vk.strategy.VideoOperations;
 import ru.todo100.social.vk.strategy.WallOperations;
 
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author Igor Bobko
@@ -40,6 +43,7 @@ public class UserGroupsController implements Initializable {
 
     public ComboBox exitBy;
 
+    public CheckBox inVideo;
 
     @SuppressWarnings("UnusedParameters")
     public void publish(ActionEvent actionEvent) {
@@ -56,12 +60,34 @@ public class UserGroupsController implements Initializable {
         System.out.println(pageGroup.getSelectionModel().getSelectedIndex());
         WallOperations wall = new WallOperations(Engine.accessToken);
 
+        VideoOperations video = new VideoOperations(Engine.accessToken);
+
+
+
+
+        Pattern p = Pattern.compile("video(\\d+)_(\\d+)");
+
         Thread tread = new Thread(new Runnable() {
             @Override
             public void run() {
                 for (GroupData gd : userGroups) {
                     System.out.println(pageGroup.getSelectionModel().getSelectedIndex() + " " + gd.getType());
-                    if (pageGroup.getSelectionModel().getSelectedIndex() == -1 || pageGroup.getSelectionModel().getSelectedIndex() == 0) {
+
+                    if (inVideo.isSelected()) {
+                        Matcher m = p.matcher(attachment);
+                        boolean b = m.matches();
+                        if (b) {
+                            Integer owner_id = Integer.parseInt(m.group(1));
+                            Integer video_id = Integer.parseInt(m.group(2));
+
+                            System.out.println(owner_id + " " + video_id );
+                            video.add(gd.getId() * -1,video_id,owner_id);
+                        }
+
+                    }
+
+
+                    if (pageGroup.getSelectionModel().getSelectedIndex() == 0) {
                         wall.post(gd.getId() * -1, 0, 0, message, attachment);
                         loggerArea.appendText("Publish in: " + gd.getName() + " (" + gd.getId() + ")" + " \n");
                     }
@@ -142,6 +168,7 @@ public class UserGroupsController implements Initializable {
         country.add("По страница");
         country.add("По группа");
         pageGroup.setItems(country);
+        pageGroup.getSelectionModel().select(0);
 
         final ObservableList<String> exitByData = FXCollections.observableArrayList();
         exitByData.add("Из всех");

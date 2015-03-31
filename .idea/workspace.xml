@@ -7,9 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="abf1a9c5-0006-4013-acfe-a417f2000778" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/JavaFXApp/JavaFXApp.jar" afterPath="$PROJECT_DIR$/out/artifacts/JavaFXApp/JavaFXApp.jar" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/JavaFXApp/JavaFXApp.jnlp" afterPath="$PROJECT_DIR$/out/artifacts/JavaFXApp/JavaFXApp.jnlp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/LandingController.java" afterPath="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/LandingController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/UserGroupsController.java" afterPath="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/UserGroupsController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/todo100/social/vk/strategy/VideoOperations.java" afterPath="$PROJECT_DIR$/src/ru/todo100/social/vk/strategy/VideoOperations.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/userGroups.fxml" afterPath="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/userGroups.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Vkontakte.iws" />
@@ -58,14 +59,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Operations.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/todo100/social/vk/strategy/Operations.java">
+      <file leaf-file-name="userGroups.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/userGroups.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3045">
-              <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
-              <folding>
-                <element signature="e#2064#2086#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="723" max-vertical-offset="1500">
+              <caret line="66" column="50" selection-start-line="66" selection-start-column="50" selection-end-line="66" selection-end-column="50" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -82,14 +81,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserGroupsController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UserGroupsController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/UserGroupsController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2838828" vertical-offset="565" max-vertical-offset="2370">
-              <caret line="63" column="135" selection-start-line="63" selection-start-column="135" selection-end-line="63" selection-end-column="135" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="779" max-vertical-offset="2730">
+              <caret line="83" column="55" selection-start-line="83" selection-start-column="55" selection-end-line="83" selection-end-column="55" />
               <folding>
-                <element signature="e#1335#1372#0" expanded="true" />
-                <element signature="e#3313#3350#0" expanded="true" />
+                <element signature="e#1482#1519#0" expanded="true" />
+                <element signature="e#4085#4122#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VideoOperations.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/todo100/social/vk/strategy/VideoOperations.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="245" max-vertical-offset="1020">
+              <caret line="26" column="82" selection-start-line="26" selection-start-column="82" selection-end-line="26" selection-end-column="82" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#391#392#0" expanded="true" />
+                <element signature="e#425#426#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -98,32 +111,19 @@
       <file leaf-file-name="WallOperations.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ru/todo100/social/vk/strategy/WallOperations.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="2745">
+            <state vertical-scroll-proportion="0.0" vertical-offset="258" max-vertical-offset="2745">
               <caret line="87" column="30" selection-start-line="87" selection-start-column="30" selection-end-line="87" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GroupsOperations.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/todo100/social/vk/strategy/GroupsOperations.java">
+      <file leaf-file-name="searchGroups.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/searchGroups.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="421" max-vertical-offset="2535">
-              <caret line="56" column="27" selection-start-line="56" selection-start-column="27" selection-end-line="56" selection-end-column="27" />
+            <state vertical-scroll-proportion="-13.75" vertical-offset="590" max-vertical-offset="1320">
+              <caret line="65" column="40" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="40" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GroupData.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/todo100/social/vk/datas/GroupData.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="91" max-vertical-offset="1125">
-              <caret line="8" column="19" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="19" />
-              <folding>
-                <element signature="e#1262#1263#0" expanded="true" />
-                <element signature="e#1302#1303#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -142,27 +142,27 @@
         <entry file="file://$PROJECT_DIR$/src/ru/todo100/social/vk/strategy/DatabaseOperations.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="915">
-              <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="37" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LandingController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LandingController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/LandingController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="2040">
-              <caret line="81" column="58" selection-start-line="81" selection-start-column="58" selection-end-line="81" selection-end-column="58" />
+            <state vertical-scroll-proportion="0.2532833" vertical-offset="405" max-vertical-offset="2040">
+              <caret line="64" column="137" selection-start-line="64" selection-start-column="137" selection-end-line="64" selection-end-column="137" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DatabaseData.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ru/todo100/social/vk/datas/DatabaseData.java">
+      <file leaf-file-name="UserOperations.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/todo100/social/vk/strategy/UserOperations.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
-              <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
+              <caret line="30" column="50" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -186,7 +186,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/ru/todo100/social/vk/strategy/VideoOperations.java" />
         <option value="$PROJECT_DIR$/src/ru/todo100/social/vk/GroupTypeDataComboxBox.java" />
         <option value="$PROJECT_DIR$/src/ru/todo100/social/vk/components/GroupTypeDataComboxBox.java" />
         <option value="$PROJECT_DIR$/src/ru/todo100/social/vk/components/GroupTypeDataComboBox.java" />
@@ -195,15 +194,16 @@
         <option value="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/searchGroups.fxml" />
         <option value="$PROJECT_DIR$/src/ru/todo100/social/vk/Main.java" />
         <option value="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/landing.fxml" />
-        <option value="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/userGroups.fxml" />
         <option value="$PROJECT_DIR$/src/ru/todo100/social/AntiCaptcha.java" />
         <option value="$PROJECT_DIR$/src/ru/todo100/social/vk/strategy/Operations.java" />
         <option value="$PROJECT_DIR$/src/ru/todo100/social/vk/datas/GroupData.java" />
         <option value="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/SearchGroupController.java" />
         <option value="$PROJECT_DIR$/src/ru/todo100/social/vk/strategy/GroupsOperations.java" />
         <option value="$PROJECT_DIR$/src/ru/todo100/social/vk/strategy/WallOperations.java" />
-        <option value="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/LandingController.java" />
         <option value="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/UserGroupsController.java" />
+        <option value="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/userGroups.fxml" />
+        <option value="$PROJECT_DIR$/src/ru/todo100/social/vk/strategy/VideoOperations.java" />
+        <option value="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/LandingController.java" />
       </list>
     </option>
   </component>
@@ -757,7 +757,7 @@
       <workItem from="1427374661307" duration="27999000" />
       <workItem from="1427649226874" duration="664000" />
       <workItem from="1427805547375" duration="1134000" />
-      <workItem from="1427817142297" duration="11352000" />
+      <workItem from="1427817142297" duration="13509000" />
     </task>
     <task id="LOCAL-00001" summary="VK-2">
       <created>1427029674624</created>
@@ -897,11 +897,17 @@
       <option name="project" value="LOCAL" />
       <updated>1427836446367</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="fix 1">
+      <created>1427836728861</created>
+      <option name="number" value="00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1427836728861</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="82614000" />
+    <option name="totallyTimeSpent" value="84771000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -942,15 +948,15 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37070063" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.37070063" sideWeight="0.49966866" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.07355865" sideWeight="0.5008726" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.07355865" sideWeight="0.4991274" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1742876" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.35286623" sideWeight="0.7574553" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.30682573" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3299363" sideWeight="0.7574553" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1095,13 +1101,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1028" max-vertical-offset="1470">
           <caret line="117" column="0" selection-start-line="117" selection-start-column="0" selection-end-line="117" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/todo100/social/vk/strategy/VideoOperations.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="645">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1299,30 +1298,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/userGroups.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="225" max-vertical-offset="1485">
-          <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/searchGroups.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="769" max-vertical-offset="1320">
-          <caret line="63" column="79" selection-start-line="63" selection-start-column="79" selection-end-line="63" selection-end-column="79" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/todo100/social/vk/strategy/UserOperations.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
-          <caret line="30" column="50" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ru/todo100/social/AntiCaptcha.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1256" max-vertical-offset="1875">
@@ -1345,14 +1320,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="315">
           <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/todo100/social/vk/strategy/DatabaseOperations.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="915">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -1384,10 +1351,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/todo100/social/vk/strategy/WallOperations.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/todo100/social/vk/strategy/DatabaseOperations.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="663" max-vertical-offset="2745">
-          <caret line="87" column="30" selection-start-line="87" selection-start-column="30" selection-end-line="87" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="90" max-vertical-offset="915">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="37" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/searchGroups.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.75" vertical-offset="590" max-vertical-offset="1320">
+          <caret line="65" column="40" selection-start-line="65" selection-start-column="38" selection-end-line="65" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/userGroups.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="723" max-vertical-offset="1500">
+          <caret line="66" column="50" selection-start-line="66" selection-start-column="50" selection-end-line="66" selection-end-column="50" />
           <folding />
         </state>
       </provider>
@@ -1402,22 +1385,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/LandingController.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/UserGroupsController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="450" max-vertical-offset="2040">
-          <caret line="81" column="58" selection-start-line="81" selection-start-column="58" selection-end-line="81" selection-end-column="58" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="779" max-vertical-offset="2730">
+          <caret line="83" column="55" selection-start-line="83" selection-start-column="55" selection-end-line="83" selection-end-column="55" />
+          <folding>
+            <element signature="e#1482#1519#0" expanded="true" />
+            <element signature="e#4085#4122#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/todo100/social/vk/strategy/UserOperations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="615">
+          <caret line="30" column="50" selection-start-line="30" selection-start-column="50" selection-end-line="30" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/UserGroupsController.java">
+    <entry file="file://$PROJECT_DIR$/src/ru/todo100/social/vk/strategy/VideoOperations.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2838828" vertical-offset="565" max-vertical-offset="2370">
-          <caret line="63" column="135" selection-start-line="63" selection-start-column="135" selection-end-line="63" selection-end-column="135" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="245" max-vertical-offset="1020">
+          <caret line="26" column="82" selection-start-line="26" selection-start-column="82" selection-end-line="26" selection-end-column="82" />
           <folding>
-            <element signature="e#1335#1372#0" expanded="true" />
-            <element signature="e#3313#3350#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#391#392#0" expanded="true" />
+            <element signature="e#425#426#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/todo100/social/vk/strategy/WallOperations.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="258" max-vertical-offset="2745">
+          <caret line="87" column="30" selection-start-line="87" selection-start-column="30" selection-end-line="87" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/LandingController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2532833" vertical-offset="405" max-vertical-offset="2040">
+          <caret line="64" column="137" selection-start-line="64" selection-start-column="137" selection-end-line="64" selection-end-column="137" />
+          <folding />
         </state>
       </provider>
     </entry>

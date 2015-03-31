@@ -20,7 +20,7 @@
                  <children>
                      <VBox AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                         <children>
-                            <TableView fx:id="groupsList" VBox.vgrow="ALWAYS" onMouseClicked="#onGroupClick">
+                            <TableView fx:id="groupsList" onMouseClicked="#onGroupClick" VBox.vgrow="ALWAYS">
                                 <columns>
                                     <TableColumn fx:id="groupIdColumn" text="ID" />
                                     <TableColumn fx:id="groupNameColumn" text="Наименование" />
@@ -64,6 +64,7 @@
                             <TextField fx:id="sleepTime" layoutX="68.0" layoutY="346.0" promptText="0" text="0" />
                             <Label layoutX="14.0" layoutY="351.0" text="Время" />
                             <ComboBox fx:id="pageGroup" layoutX="250.0" layoutY="347.0" prefWidth="150.0" />
+                        <CheckBox fx:id="inVideo" layoutX="150.0" layoutY="385.0" mnemonicParsing="false" text="В видеозаписях" />
                         </children>
                      </AnchorPane>
                  </content>
