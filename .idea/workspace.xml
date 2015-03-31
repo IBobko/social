@@ -9,7 +9,6 @@
     <list default="true" id="abf1a9c5-0006-4013-acfe-a417f2000778" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/JavaFXApp/JavaFXApp.jar" afterPath="$PROJECT_DIR$/out/artifacts/JavaFXApp/JavaFXApp.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/JavaFXApp/JavaFXApp.jnlp" afterPath="$PROJECT_DIR$/out/artifacts/JavaFXApp/JavaFXApp.jnlp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/UserGroupsController.java" afterPath="$PROJECT_DIR$/src/ru/todo100/social/vk/controllers/UserGroupsController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Vkontakte.iws" />
@@ -756,7 +755,7 @@
       <workItem from="1427374661307" duration="27999000" />
       <workItem from="1427649226874" duration="664000" />
       <workItem from="1427805547375" duration="1134000" />
-      <workItem from="1427817142297" duration="14127000" />
+      <workItem from="1427817142297" duration="14137000" />
     </task>
     <task id="LOCAL-00001" summary="VK-2">
       <created>1427029674624</created>
@@ -920,11 +919,17 @@
       <option name="project" value="LOCAL" />
       <updated>1427839233629</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="fix 1">
+      <created>1427839504505</created>
+      <option name="number" value="00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1427839504505</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="85389000" />
+    <option name="totallyTimeSpent" value="85399000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
