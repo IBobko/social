@@ -123,7 +123,7 @@ public class Operations {
                 URLConnection connection = url.openConnection();
                 InputStream in = connection.getInputStream();
 
-                File f = new File("/home/igor/" + captcha_sid);
+                File f = new File(captcha_sid);
                 boolean newFile = f.createNewFile();
 
                 FileOutputStream o =
