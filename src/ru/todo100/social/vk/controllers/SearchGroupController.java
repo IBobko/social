@@ -199,7 +199,7 @@ public class SearchGroupController {
         for (int i = 0; i < maxCountIter; i++) {
             final List<GroupData> result = groups.search(searchString, i * count, maxCount, country_id, city_id,type);
             for (GroupData group : result) {
-
+                if (group.getIsClosed() == 1) continue;
                 if (onlyPostCheckbox.isSelected() && group.getCanPost() == 0) {
                     continue;
                 }

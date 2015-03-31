@@ -48,6 +48,7 @@ public class Operations {
         while ((inputLine = in.readLine()) != null) {
             builder.append(inputLine);
         }
+        System.out.println(builder.toString());
 
         JSONObject jsonResponse = null;
         try {

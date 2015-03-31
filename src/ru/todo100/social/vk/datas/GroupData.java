@@ -6,7 +6,7 @@ public class GroupData {
     private Long id;
     private String name;
     private String screenName;
-    private Boolean isClosed;
+    private Integer isClosed;
     private String type;
     private Boolean isAdmin;
     private Boolean isMember;
@@ -57,11 +57,11 @@ public class GroupData {
         this.screenName = screenName;
     }
 
-    public Boolean getIsClosed() {
+    public Integer getIsClosed() {
         return isClosed;
     }
 
-    public void setIsClosed(Boolean isClosed) {
+    public void setIsClosed(Integer isClosed) {
         this.isClosed = isClosed;
     }
 

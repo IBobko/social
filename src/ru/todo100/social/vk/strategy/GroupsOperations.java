@@ -37,7 +37,7 @@ public class GroupsOperations extends Operations {
 
         try {
             final StringBuilder urlString = getStringBuilder("groups.join");
-            urlString.append("&group_id=1").append(group_id);
+            urlString.append("&group_id").append("=").append(group_id);
 
             String responseBody = getResponse(urlString.toString());
 
@@ -127,6 +127,12 @@ public class GroupsOperations extends Operations {
         if (json.has("members_count")) {
             group.setMemberCount(json.getInt("members_count"));
         }
+
+        if (json.has("is_closed")) {
+            group.setIsClosed(json.getInt("is_closed"));
+        }
+
+
         return group;
     }
 
