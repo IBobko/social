@@ -63,8 +63,6 @@ public class UserGroupsController implements Initializable {
         VideoOperations video = new VideoOperations(Engine.accessToken);
 
 
-
-
         Pattern p = Pattern.compile("video(\\d+)_(\\d+)");
 
         Thread tread = new Thread(new Runnable() {
@@ -80,25 +78,23 @@ public class UserGroupsController implements Initializable {
                             Integer owner_id = Integer.parseInt(m.group(1));
                             Integer video_id = Integer.parseInt(m.group(2));
 
-                            System.out.println(owner_id + " " + video_id );
-                            video.add(gd.getId() * -1,video_id,owner_id);
+                            System.out.println(owner_id + " " + video_id);
+                            video.add(gd.getId() * -1, video_id, owner_id);
                         }
                         loggerArea.appendText("Publish in groups video: " + gd.getName() + " (" + gd.getId() + ")" + " \n");
-                        continue;
-                    }
-
-
-                    if (pageGroup.getSelectionModel().getSelectedIndex() == 0) {
-                        wall.post(gd.getId() * -1, 0, 0, message, attachment);
-                        loggerArea.appendText("Publish in: " + gd.getName() + " (" + gd.getId() + ")" + " \n");
-                    }
-                    if (pageGroup.getSelectionModel().getSelectedIndex() == 1 && gd.getType().equals("page")) {
-                        wall.post(gd.getId() * -1, 0, 0, message, attachment);
-                        loggerArea.appendText("Publish in: " + gd.getName() + " (" + gd.getId() + ")" + " \n");
-                    }
-                    if (pageGroup.getSelectionModel().getSelectedIndex() == 2 && gd.getType().equals("group")) {
-                        wall.post(gd.getId() * -1, 0, 0, message, attachment);
-                        loggerArea.appendText("Publish in: " + gd.getName() + " (" + gd.getId() + ")" + " \n");
+                    } else {
+                        if (pageGroup.getSelectionModel().getSelectedIndex() == 0) {
+                            wall.post(gd.getId() * -1, 0, 0, message, attachment);
+                            loggerArea.appendText("Publish in: " + gd.getName() + " (" + gd.getId() + ")" + " \n");
+                        }
+                        if (pageGroup.getSelectionModel().getSelectedIndex() == 1 && gd.getType().equals("page")) {
+                            wall.post(gd.getId() * -1, 0, 0, message, attachment);
+                            loggerArea.appendText("Publish in: " + gd.getName() + " (" + gd.getId() + ")" + " \n");
+                        }
+                        if (pageGroup.getSelectionModel().getSelectedIndex() == 2 && gd.getType().equals("group")) {
+                            wall.post(gd.getId() * -1, 0, 0, message, attachment);
+                            loggerArea.appendText("Publish in: " + gd.getName() + " (" + gd.getId() + ")" + " \n");
+                        }
                     }
                 }
                 System.out.println("done");
