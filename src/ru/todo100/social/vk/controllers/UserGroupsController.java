@@ -68,10 +68,12 @@ public class UserGroupsController implements Initializable {
         Thread tread = new Thread(new Runnable() {
             @Override
             public void run() {
+
+
                 for (GroupData gd : userGroups) {
                     System.out.println(pageGroup.getSelectionModel().getSelectedIndex() + " " + gd.getType());
 
-                    if (inVideo.isSelected()) {
+                    if (inVideo.isSelected() && gd.getType().equals("group")) {
                         Matcher m = p.matcher(attachment);
                         boolean b = m.matches();
                         if (b) {
