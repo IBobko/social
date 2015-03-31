@@ -86,11 +86,11 @@ public class LandingController implements Initializable {
                         }
                         if (element.getNodeValue().equals("pass")) {
                             HTMLInputElement passwordElement = (HTMLInputElement) nodes.item(i);
-                            passwordElement.setValue(password);
+                            //passwordElement.setValue(password);
                         }
                         if (element.getNodeValue().equals("submit")) {
                             HTMLInputElement submitElement = (HTMLInputElement) nodes.item(i);
-                            submitElement.click();
+                            //submitElement.click();
                         }
                     }
                 }

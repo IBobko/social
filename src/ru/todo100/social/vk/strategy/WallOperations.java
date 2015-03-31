@@ -85,7 +85,7 @@ public class WallOperations extends Operations {
         try {
             URL url = new URL("https://api.vk.com/method/wall.delete?owner_id=" + owner_id
                     + "&post_id=" + post_id
-                    + "&v=5.27&access_token=" + accessToken);
+                    + "&v=5.29&access_token=" + accessToken);
 
             URLConnection connection = url.openConnection();
             BufferedReader in = new BufferedReader(new InputStreamReader(

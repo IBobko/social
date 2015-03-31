@@ -43,7 +43,7 @@ public class UserGroupsController implements Initializable {
 
     @SuppressWarnings("UnusedParameters")
     public void publish(ActionEvent actionEvent) {
-        System.out.println();
+
         loggerArea.appendText("Start publish\n");
         String message = messageArea.getText();
         String attachment = attachmentArea.getText();
@@ -65,11 +65,11 @@ public class UserGroupsController implements Initializable {
                         wall.post(gd.getId() * -1, 0, 0, message, attachment);
                         loggerArea.appendText("Publish in: " + gd.getName() + " (" + gd.getId() + ")" + " \n");
                     }
-                    if (pageGroup.getSelectionModel().getSelectedIndex() == 0) {
+                    if (pageGroup.getSelectionModel().getSelectedIndex() == 0 && gd.getType().equals("page")) {
                         wall.post(gd.getId() * -1, 0, 0, message, attachment);
                         loggerArea.appendText("Publish in: " + gd.getName() + " (" + gd.getId() + ")" + " \n");
                     }
-                    if (pageGroup.getSelectionModel().getSelectedIndex() == 1) {
+                    if (pageGroup.getSelectionModel().getSelectedIndex() == 1 && gd.getType().equals("group")) {
                         wall.post(gd.getId() * -1, 0, 0, message, attachment);
                         loggerArea.appendText("Publish in: " + gd.getName() + " (" + gd.getId() + ")" + " \n");
                     }
