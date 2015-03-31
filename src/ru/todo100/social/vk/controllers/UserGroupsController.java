@@ -5,8 +5,6 @@ import com.sun.javafx.application.HostServicesDelegate;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -15,10 +13,6 @@ import ru.todo100.social.vk.datas.GroupData;
 import ru.todo100.social.vk.strategy.GroupsOperations;
 import ru.todo100.social.vk.strategy.WallOperations;
 
-import java.awt.event.MouseEvent;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -47,7 +41,6 @@ public class UserGroupsController implements Initializable {
     public ComboBox exitBy;
 
 
-
     @SuppressWarnings("UnusedParameters")
     public void publish(ActionEvent actionEvent) {
         System.out.println();
@@ -69,21 +62,16 @@ public class UserGroupsController implements Initializable {
                 for (GroupData gd : userGroups) {
                     System.out.println(gd.getName());
                     if (pageGroup.getSelectionModel().getSelectedIndex() == -1) {
-                        if (gd.getCanPost() == 1) {
-                            wall.post(gd.getId() * -1, 0, 0, message, attachment);
-                            loggerArea.appendText("Publish in: " + gd.getName() + " ("+gd.getId()+")"+" \n");
-                        }
+                        wall.post(gd.getId() * -1, 0, 0, message, attachment);
+                        loggerArea.appendText("Publish in: " + gd.getName() + " (" + gd.getId() + ")" + " \n");
                     }
                     if (pageGroup.getSelectionModel().getSelectedIndex() == 0) {
-                        if (gd.getCanPost() == 1){
-                            wall.post(gd.getId() * -1, 0, 0, message, attachment);
-                            loggerArea.appendText("Publish in: " + gd.getName() + " ("+gd.getId()+")"+" \n");
-                        }
-
+                        wall.post(gd.getId() * -1, 0, 0, message, attachment);
+                        loggerArea.appendText("Publish in: " + gd.getName() + " (" + gd.getId() + ")" + " \n");
                     }
-                    if (pageGroup.getSelectionModel().getSelectedIndex()==1) {
-                        if (gd.getCanPost() == 1) wall.post(gd.getId() * -1, 0, 0, message, attachment);
-                        loggerArea.appendText("Publish in: " + gd.getName() + " ("+gd.getId()+")"+" \n");
+                    if (pageGroup.getSelectionModel().getSelectedIndex() == 1) {
+                        wall.post(gd.getId() * -1, 0, 0, message, attachment);
+                        loggerArea.appendText("Publish in: " + gd.getName() + " (" + gd.getId() + ")" + " \n");
                     }
                 }
                 System.out.println("done");
@@ -102,16 +90,22 @@ public class UserGroupsController implements Initializable {
 
         List<GroupData> userGroups = groupsList.getItems();
         for (GroupData gd : userGroups) {
-            if (exitBy.getSelectionModel().getSelectedIndex()==0) {
+            if (exitBy.getSelectionModel().getSelectedIndex() == 0) {
                 groups.leave(gd.getId().intValue());
                 continue;
             }
-            if (exitBy.getSelectionModel().getSelectedIndex()==1) {
-                if (gd.getType().equals("page")) {}else {continue;}
+            if (exitBy.getSelectionModel().getSelectedIndex() == 1) {
+                if (gd.getType().equals("page")) {
+                } else {
+                    continue;
+                }
             }
 
-            if (exitBy.getSelectionModel().getSelectedIndex()==2) {
-                if (gd.getType().equals("group")) {}else {continue;}
+            if (exitBy.getSelectionModel().getSelectedIndex() == 2) {
+                if (gd.getType().equals("group")) {
+                } else {
+                    continue;
+                }
             }
             if (gd.getMemberCount() < count) {
                 groups.leave(gd.getId().intValue());
@@ -137,7 +131,6 @@ public class UserGroupsController implements Initializable {
         List<GroupData> userGroups = groups.get();
 
 
-
         data.addAll(userGroups);
 
 
@@ -159,17 +152,13 @@ public class UserGroupsController implements Initializable {
     }
 
 
-
-
     public void onGroupClick(javafx.scene.input.MouseEvent event) {
-
-
-            if (event.getClickCount() == 2) {
-                GroupData groupData = (GroupData) groupsList.getSelectionModel().getSelectedItem();
-                HostServicesDelegate hostServices = HostServicesFactory.getInstance(Engine.application);
-                String url = "http://vk.com/club" + groupData.getId();
-                hostServices.showDocument(url);
-            }
+        if (event.getClickCount() == 2) {
+            GroupData groupData = (GroupData) groupsList.getSelectionModel().getSelectedItem();
+            HostServicesDelegate hostServices = HostServicesFactory.getInstance(Engine.application);
+            String url = "http://vk.com/club" + groupData.getId();
+            hostServices.showDocument(url);
+        }
 
     }
 
