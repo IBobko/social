@@ -73,7 +73,7 @@ public class UserGroupsController implements Initializable {
                 for (GroupData gd : userGroups) {
                     System.out.println(pageGroup.getSelectionModel().getSelectedIndex() + " " + gd.getType());
 
-                    if (inVideo.isSelected() && gd.getType().equals("group")) {
+                    if (inVideo.isSelected()) {
                         Matcher m = p.matcher(attachment);
                         boolean b = m.matches();
                         if (b) {
