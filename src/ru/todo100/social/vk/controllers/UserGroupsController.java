@@ -83,6 +83,7 @@ public class UserGroupsController implements Initializable {
                             System.out.println(owner_id + " " + video_id );
                             video.add(gd.getId() * -1,video_id,owner_id);
                         }
+                        loggerArea.appendText("Publish in groups video: " + gd.getName() + " (" + gd.getId() + ")" + " \n");
                         continue;
                     }
 
