@@ -73,7 +73,7 @@ public class UserGroupsController implements Initializable {
                 for (GroupData gd : userGroups) {
                     System.out.println(pageGroup.getSelectionModel().getSelectedIndex() + " " + gd.getType());
 
-                    if (inVideo.isSelected()) {
+                    if (inVideo.isSelected() && gd.getType().equals("group")) {
                         Matcher m = p.matcher(attachment);
                         boolean b = m.matches();
                         if (b) {
@@ -83,7 +83,7 @@ public class UserGroupsController implements Initializable {
                             System.out.println(owner_id + " " + video_id );
                             video.add(gd.getId() * -1,video_id,owner_id);
                         }
-
+                        continue;
                     }
 
 
