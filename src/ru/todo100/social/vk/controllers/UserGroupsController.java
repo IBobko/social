@@ -141,11 +141,10 @@ public class UserGroupsController implements Initializable {
         exitByData.add("Только из групп");
         exitBy.setItems(exitByData);
 
-
-
-
-
     }
+
+
+
 
     public void onGroupClick(javafx.scene.input.MouseEvent event) {
 

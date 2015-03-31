@@ -48,12 +48,19 @@ public class LandingController implements Initializable {
     @FXML
     private TableView groupsInfo;
 
+    private Stage userGroupsWindow;
+
     public void initialize(URL location, ResourceBundle resources) {
         this.init();
 
     }
 
     protected void init() {
+
+
+
+
+
         groupsMenu.setDisable(true);
         webView.getEngine().load("https://oauth.vk.com/authorize?client_id=" + this.clientId + "&scope=friends,messages,wall,groups&redirect_uri=https://oauth.vk.com/blank.html&display=page&v=5.27N&response_type=token");
         webView.getEngine().getLoadWorker().stateProperty().addListener(new ChangeListener<Worker.State>() {
@@ -92,18 +99,21 @@ public class LandingController implements Initializable {
     }
 
     public void showUserGroups(ActionEvent actionEvent) {
+
         try {
-            Stage stage = new Stage();
+            userGroupsWindow = new Stage();
             Parent root = FXMLLoader.load(
                     this.getClass().getResource("userGroups.fxml"));
 
-            stage.setScene(new Scene(root));
-            stage.setTitle("Группы пользователя");
-            stage.initModality(Modality.WINDOW_MODAL);
-            stage.show();
+            userGroupsWindow.setScene(new Scene(root));
+            userGroupsWindow.setTitle("Группы пользователя");
+            userGroupsWindow.initModality(Modality.WINDOW_MODAL);
+            userGroupsWindow.show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     public void searchGroups(ActionEvent actionEvent) {
