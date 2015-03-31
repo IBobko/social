@@ -70,6 +70,7 @@ public class Operations {
                 String query = urlParts[1];
                 for (String param : query.split("&")) {
                     String[] pair = param.split("=");
+                    if (pair.length < 2) continue;
                     String key = URLEncoder.encode(pair[0], "UTF-8");
                     String value = "";
                     if (pair.length > 1) {
@@ -154,8 +155,8 @@ public class Operations {
                 array.put(captcha_sid_json);
 
                 JSONObject captcha_key_json = new JSONObject();
-                captcha_sid_json.put("key","captcha_key");
-                captcha_sid_json.put("value",key);
+                captcha_key_json.put("key","captcha_key");
+                captcha_key_json.put("value",key);
 
                 array.put(captcha_key_json);
 
@@ -177,9 +178,10 @@ public class Operations {
         String methodName = findValue(params, "method");
 
         StringBuilder request = getStringBuilder(methodName);
-
+        System.out.println(params.toString());
         for (int i = 0; i < params.length(); i++) {
             try {
+                if (!params.getJSONObject(i).has("key")) continue;
                 if (!params.getJSONObject(i).getString("key").equals("method")) {
                     request.append("&").append(params.getJSONObject(i).getString("key")).append("=").append(params.getJSONObject(i).getString("value"));
                 }
