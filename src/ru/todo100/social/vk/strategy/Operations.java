@@ -170,7 +170,7 @@ public class Operations {
             e.printStackTrace();
         }
 
-        return null;
+        return "{}";
     }
 
     public String repeatRequest(JSONArray params) {
