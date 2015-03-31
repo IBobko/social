@@ -68,36 +68,35 @@ public class UserGroupsController implements Initializable {
         Thread tread = new Thread(new Runnable() {
             @Override
             public void run() {
-
-
                 for (GroupData gd : userGroups) {
-                    System.out.println(pageGroup.getSelectionModel().getSelectedIndex() + " " + gd.getType());
+                    if (inVideo.isSelected()) {
+                        if (gd.getType().equals("group")) {
+                            Matcher m = p.matcher(attachment);
+                            boolean b = m.matches();
+                            if (b) {
+                                Integer owner_id = Integer.parseInt(m.group(1));
+                                Integer video_id = Integer.parseInt(m.group(2));
 
-                    if (inVideo.isSelected() && gd.getType().equals("group")) {
-                        Matcher m = p.matcher(attachment);
-                        boolean b = m.matches();
-                        if (b) {
-                            Integer owner_id = Integer.parseInt(m.group(1));
-                            Integer video_id = Integer.parseInt(m.group(2));
-
-                            System.out.println(owner_id + " " + video_id);
-                            video.add(gd.getId() * -1, video_id, owner_id);
+                                System.out.println(owner_id + " " + video_id);
+                                video.add(gd.getId() * -1, video_id, owner_id);
+                            }
+                            loggerArea.appendText("Publish in groups video: " + gd.getName() + " (" + gd.getId() + ")" + " \n");
                         }
-                        loggerArea.appendText("Publish in groups video: " + gd.getName() + " (" + gd.getId() + ")" + " \n");
-                    } else {
-                        if (pageGroup.getSelectionModel().getSelectedIndex() == 0) {
-                            wall.post(gd.getId() * -1, 0, 0, message, attachment);
-                            loggerArea.appendText("Publish in: " + gd.getName() + " (" + gd.getId() + ")" + " \n");
-                        }
-                        if (pageGroup.getSelectionModel().getSelectedIndex() == 1 && gd.getType().equals("page")) {
-                            wall.post(gd.getId() * -1, 0, 0, message, attachment);
-                            loggerArea.appendText("Publish in: " + gd.getName() + " (" + gd.getId() + ")" + " \n");
-                        }
-                        if (pageGroup.getSelectionModel().getSelectedIndex() == 2 && gd.getType().equals("group")) {
-                            wall.post(gd.getId() * -1, 0, 0, message, attachment);
-                            loggerArea.appendText("Publish in: " + gd.getName() + " (" + gd.getId() + ")" + " \n");
-                        }
+                        continue;
                     }
+                    if (pageGroup.getSelectionModel().getSelectedIndex() == 0) {
+                        wall.post(gd.getId() * -1, 0, 0, message, attachment);
+                        loggerArea.appendText("Publish in: " + gd.getName() + " (" + gd.getId() + ")" + " \n");
+                    }
+                    if (pageGroup.getSelectionModel().getSelectedIndex() == 1 && gd.getType().equals("page")) {
+                        wall.post(gd.getId() * -1, 0, 0, message, attachment);
+                        loggerArea.appendText("Publish in: " + gd.getName() + " (" + gd.getId() + ")" + " \n");
+                    }
+                    if (pageGroup.getSelectionModel().getSelectedIndex() == 2 && gd.getType().equals("group")) {
+                        wall.post(gd.getId() * -1, 0, 0, message, attachment);
+                        loggerArea.appendText("Publish in: " + gd.getName() + " (" + gd.getId() + ")" + " \n");
+                    }
+
                 }
                 System.out.println("done");
             }
