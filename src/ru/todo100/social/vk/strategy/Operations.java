@@ -38,7 +38,7 @@ public class Operations {
         }
 
         System.out.println(jjj);
-        URL url = new URL(urlString);
+        URL url = new URL(jjj.toString());
         URLConnection connection = url.openConnection();
         Charset charset = Charset.forName("UTF8");
         BufferedReader in = new BufferedReader(new InputStreamReader(
