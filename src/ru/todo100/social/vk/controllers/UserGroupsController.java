@@ -60,16 +60,16 @@ public class UserGroupsController implements Initializable {
             @Override
             public void run() {
                 for (GroupData gd : userGroups) {
-                    System.out.println(gd.getName());
+                    System.out.println(pageGroup.getSelectionModel().getSelectedIndex() + " " + gd.getType());
                     if (pageGroup.getSelectionModel().getSelectedIndex() == -1) {
                         wall.post(gd.getId() * -1, 0, 0, message, attachment);
                         loggerArea.appendText("Publish in: " + gd.getName() + " (" + gd.getId() + ")" + " \n");
                     }
-                    if (pageGroup.getSelectionModel().getSelectedIndex() == 0 && gd.getType().equals("page")) {
+                    if (pageGroup.getSelectionModel().getSelectedIndex() == 1 && gd.getType().equals("page")) {
                         wall.post(gd.getId() * -1, 0, 0, message, attachment);
                         loggerArea.appendText("Publish in: " + gd.getName() + " (" + gd.getId() + ")" + " \n");
                     }
-                    if (pageGroup.getSelectionModel().getSelectedIndex() == 1 && gd.getType().equals("group")) {
+                    if (pageGroup.getSelectionModel().getSelectedIndex() == 2 && gd.getType().equals("group")) {
                         wall.post(gd.getId() * -1, 0, 0, message, attachment);
                         loggerArea.appendText("Publish in: " + gd.getName() + " (" + gd.getId() + ")" + " \n");
                     }
@@ -90,18 +90,18 @@ public class UserGroupsController implements Initializable {
 
         List<GroupData> userGroups = groupsList.getItems();
         for (GroupData gd : userGroups) {
-            if (exitBy.getSelectionModel().getSelectedIndex() == 0) {
+            if (exitBy.getSelectionModel().getSelectedIndex() == 1) {
                 groups.leave(gd.getId().intValue());
                 continue;
             }
-            if (exitBy.getSelectionModel().getSelectedIndex() == 1) {
+            if (exitBy.getSelectionModel().getSelectedIndex() == 2) {
                 if (gd.getType().equals("page")) {
                 } else {
                     continue;
                 }
             }
 
-            if (exitBy.getSelectionModel().getSelectedIndex() == 2) {
+            if (exitBy.getSelectionModel().getSelectedIndex() == 3) {
                 if (gd.getType().equals("group")) {
                 } else {
                     continue;
