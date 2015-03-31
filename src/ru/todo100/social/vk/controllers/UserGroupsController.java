@@ -61,7 +61,7 @@ public class UserGroupsController implements Initializable {
             public void run() {
                 for (GroupData gd : userGroups) {
                     System.out.println(pageGroup.getSelectionModel().getSelectedIndex() + " " + gd.getType());
-                    if (pageGroup.getSelectionModel().getSelectedIndex() == -1) {
+                    if (pageGroup.getSelectionModel().getSelectedIndex() == -1 || pageGroup.getSelectionModel().getSelectedIndex() == 0) {
                         wall.post(gd.getId() * -1, 0, 0, message, attachment);
                         loggerArea.appendText("Publish in: " + gd.getName() + " (" + gd.getId() + ")" + " \n");
                     }
@@ -90,18 +90,18 @@ public class UserGroupsController implements Initializable {
 
         List<GroupData> userGroups = groupsList.getItems();
         for (GroupData gd : userGroups) {
-            if (exitBy.getSelectionModel().getSelectedIndex() == 1) {
+            if (exitBy.getSelectionModel().getSelectedIndex() == 0) {
                 groups.leave(gd.getId().intValue());
                 continue;
             }
-            if (exitBy.getSelectionModel().getSelectedIndex() == 2) {
+            if (exitBy.getSelectionModel().getSelectedIndex() == 1) {
                 if (gd.getType().equals("page")) {
                 } else {
                     continue;
                 }
             }
 
-            if (exitBy.getSelectionModel().getSelectedIndex() == 3) {
+            if (exitBy.getSelectionModel().getSelectedIndex() == 2) {
                 if (gd.getType().equals("group")) {
                 } else {
                     continue;
