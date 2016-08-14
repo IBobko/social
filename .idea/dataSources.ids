@@ -5,6 +5,13 @@
       <identifier-quote-string>&quot;</identifier-quote-string>
     </database-info>
     <case-sensitivity plain-identifiers="upper" quoted-identifiers="exact"/>
-    <schema name="PUBLIC" catalog="PUBLIC"/>
+    <database-model serializer="dbm" rdbms="HSQLDB" format-version="2.6">
+      <database id="1" name="PUBLIC">
+        <visible>1</visible>
+      </database>
+      <schema id="2" parent="1" name="PUBLIC">
+        <visible>1</visible>
+      </schema>
+    </database-model>
   </data-source>
 </component>

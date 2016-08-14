@@ -111,7 +111,6 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
             <state vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="390">
               <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding>
@@ -119,11 +118,6 @@
                 <element signature="e#550#551#0" expanded="false" />
                 <element signature="e#578#579#0" expanded="false" />
               </folding>
-=======
-            <state vertical-scroll-proportion="0.8352601" vertical-offset="0" max-vertical-offset="765">
-              <caret line="23" column="47" selection-start-line="23" selection-start-column="47" selection-end-line="23" selection-end-column="47" />
-              <folding />
->>>>>>> e5fee0897fae1a2e434829a7f63e80b32287c1d0
             </state>
           </provider>
         </entry>
@@ -131,7 +125,7 @@
       <file leaf-file-name="Controller.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Controller.java">
           <provider selected="true" editor-type-id="text-editor">
-<<<<<<< HEAD
+
             <state vertical-scroll-proportion="0.0" vertical-offset="1335" max-vertical-offset="4995">
               <caret line="124" column="0" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
               <folding>
@@ -191,11 +185,7 @@
                 <element signature="e#12720#12721#0" expanded="false" />
                 <element signature="e#12777#12778#0" expanded="false" />
               </folding>
-=======
-            <state vertical-scroll-proportion="0.0" vertical-offset="1513" max-vertical-offset="5661">
-              <caret line="124" column="0" selection-start-line="124" selection-start-column="0" selection-end-line="124" selection-end-column="0" />
-              <folding />
->>>>>>> e5fee0897fae1a2e434829a7f63e80b32287c1d0
+
             </state>
           </provider>
         </entry>
